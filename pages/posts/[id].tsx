@@ -14,7 +14,7 @@ export const getStaticPaths:GetStaticPaths = async()=> {
 }
 
 export const getStaticProps:GetStaticProps = async ({ params: { id } }) => {
-  const postData = await getPostData(id);
+  const postData = await getPostData(id as string); //当路由允许嵌套时，传入的就是一个列表，而该文件不是嵌套路由
   return { props: { postData } };
 }
 
