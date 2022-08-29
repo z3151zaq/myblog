@@ -3,6 +3,11 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import { serialize } from 'next-mdx-remote/serialize'
+// import { MDXRemote } from 'next-mdx-remote'
+// import remarkFrontmatter from 'remark-frontmatter' // YAML and such.
+import remarkGfm from 'remark-gfm' // Tables, footnotes, strikethrough, task lists, literal URLs.
+import rehypeHighlight from 'rehype-highlight';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -50,14 +55,22 @@ export function getAllPostIds() {
 export async function getPostData(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf-8');
+
   const matterResult = matter(fileContents);
   const processedContent = await remark().use(html).process(matterResult.content);
   const contentHtml = processedContent.toString();
+
+  const mdxSource = await serialize(fileContents,{ mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeHighlight],
+      format: 'mdx'
+    },parseFrontmatter: true })
 
   // Combine the data with the id and contentHtml
   return {
     id,
     contentHtml,
     ...matterResult.data,
+    mdxSource,
   };
 }

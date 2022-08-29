@@ -4,8 +4,8 @@ import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
-const name = 'XNY';
-export const siteTitle = 'XNY Website';
+const name = '熊熊熊熊熊🐻';
+export const siteTitle = '熊熊熊熊熊🐻';
 
 export default function Layout({ children, home }:{
   children: React.ReactNode

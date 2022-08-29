@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
 import { GetStaticProps, GetStaticPaths} from 'next';
+import { MDXRemote } from 'next-mdx-remote'
 
 export const getStaticPaths:GetStaticPaths = async()=> {
   const paths = getAllPostIds();
@@ -22,6 +23,7 @@ export default function Post({ postData }) {
   return (
     <Layout>
       <Head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css"></link>
         <title>{postData.title}</title>
       </Head>
       <article>
@@ -29,7 +31,8 @@ export default function Post({ postData }) {
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
+        <MDXRemote {...postData.mdxSource} />
       </article>
     </Layout>
   );
