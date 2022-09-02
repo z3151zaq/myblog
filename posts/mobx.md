@@ -1,0 +1,142 @@
+---
+title: 'mobx入门'
+date: '2022-08-30'
+---
+
+### 核心概念
+
+#### 响应式管理
+
+- state（observable）
+- derivations（衍生）：源自state并且不会再有任何进一步相互作用的东西就是衍生。如用户界面、衍生数据、后端集成。
+    - computed values（它们是永远可以使用纯函数(pure function)从当前可观察状态中衍生出的值。）
+    - reactions（Reactions 是当状态改变时需要自动发生的副作用。最终都需要实现I / O 操作。）
+- actions（任一一段可以改变状态的代码。）
+
+#### 原则
+
+> MobX 支持单向数据流，也就是动作改变状态，而状态的改变会更新所有受影响的视图。
+
+> Action--> State --> View
+
+> 当状态改变时，所有衍生都会进行原子级的自动更新。因此永远不可能观察到中间值。
+
+> 所有衍生默认都是同步更新。这意味着例如动作可以在改变状态之后直接可以安全地检查计算值。
+
+> 计算值是延迟更新的。任何不在使用状态的计算值将不会更新，直到需要它进行副作用（I / O）操作时。 如果视图不再使用，那么它会自动被垃圾回收。
+
+>所有的计算值都应该是纯净的。它们不应该用来改变状态。
+
+Mobx提供了一种状态可供观察的（observable）解决方案。使得我们可以更细致的管理状态。
+
+redux 中的reducer是一个纯函数，state是immutable的。而Mobx中的actions可以直接修改State的。
+
+mobx适合局部组件中的状态管理。mobx中的store是一个单例。
+
+
+### API
+mobx5实现observable的原理是基于ES6的proxy，没有对应的polyfill，只能运行在现代浏览器。
+
+mobx4则是基于Object.defineProperty。Observable数组并非真正的数组，而是数组对象，所以与普通数组行为不同。
+
+事实上，虽然mobx大多被用在react的状态管理中，但它完全可以脱离react而使用。
+
+```js
+import { makeObservable } from "mobx"
+
+class ObservableTodoStore {
+  todos = [];
+  pendingRequests = 0;
+
+  constructor() {
+    //将实例注册为observable
+    //或者直接makeAutoObservable(this)
+    makeObservable(this, {
+      todos: observable,
+      pendingRequests: observable,
+      completedTodosCount: computed,
+      report: computed,
+      addTodo: action,
+    });
+    autorun(() => console.log(this.report));
+  }
+
+  get completedTodosCount() {
+    return this.todos.filter(
+      todo => todo.completed === true
+    ).length;
+  }
+
+  get report() {
+    if (this.todos.length === 0)
+      return "<无>";
+    const nextTodo = this.todos.find(todo => todo.completed === false);
+    return `下一个待办："${nextTodo ? nextTodo.task : "<无>"}"。 ` +
+      `进度：${this.completedTodosCount}/${this.todos.length}`;
+  }
+
+  addTodo(task) {
+    this.todos.push({
+      task: task,
+      completed: false,
+      assignee: null
+    });
+  }
+}
+
+const observableTodoStore = new ObservableTodoStore(); // 输出 <无>
+
+observableTodoStore.addTodo("阅读 MobX 教程"); // 下一个待办："阅读 MobX 教程"。 进度：0/1
+observableTodoStore.addTodo("试用 MobX"); // 下一个待办："阅读 MobX 教程"。 进度：0/2
+observableTodoStore.todos[0].completed = true; // 下一个待办："试用 MobX"。 进度：1/2
+observableTodoStore.todos[1].task = "在自己的项目中试用 MobX"; // 下一个待办："在自己的项目中试用 MobX"。 进度：1/2
+observableTodoStore.todos[0].task = "理解 MobX 教程"; // 无打印，因为report的依赖没有发生变化
+```
+
+为什么第五行代码没有触发report？这是因为 report 实际上并没有因为第五行代码的重命名而发生改变——尽管它背后的数据变了。另一方面，更改第一个待办的名称确实更新了 report，因为 report 正使用着那个新名字。这很好地证明了 autorun 不仅监视观察着 todos 数组，还监视着待办条目中的各个属性。
+
+
+以下是使用函数组件的编程范式:
+```js
+
+```
+
+以下是使用类组件和类的编程范式:
+
+```js
+
+//定义store
+import {observable, action} from 'mobx'
+
+export calss Home{
+    @observable
+    name = "example"
+
+    @action
+    updateName = value => this.name = value    
+}
+
+export default {home: new Home()}
+
+// App需要用Provider包裹
+import { Provider } from "mobx-react"
+import store from './store'
+//这里与redux 注入store的方式不一样
+render(<Provider {...store}> <App /> </Provider>,)
+
+//使用store
+import {observer, inject} from 'mobx-react'
+
+@observer
+@inject('home')
+export default class App extends Component {
+  render() {
+    const {name,updateName} = this.props.home
+    return (
+      <div>{name}</div>
+      <button onClick={()=>updateNmae("Hello world!")}></button>
+    )
+  }
+}
+```
+
