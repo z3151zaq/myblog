@@ -6,6 +6,8 @@ import Date from '../components/date';
 import { getSortedPostsData } from '../lib/post';
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
 
+const a = 1;
+const b = 2;
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
@@ -14,6 +16,11 @@ export default function Home({ allPostsData }) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>一个肥宅lol</p>
+      </section>
+      <section className={utilStyles.headingMd}>
+        <Link href={`/chatroom`}>
+          <a>进入聊天室aàaaaasdsadasfdsfasdfadsfasdgasdggdsddjhdsaß</a>
+        </Link>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
