@@ -6,6 +6,11 @@
   //     "processor": "markdown/markdown"
   //   }
   // ],
-  "extends": "next/core-web-vitals" //注释,
-  
+  "plugins": [
+    "prettier"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "prettier"
+  ] //注释,
 }
