@@ -1,13 +1,12 @@
+import { GetServerSideProps,GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
-import Date from '../components/date';
-import { getSortedPostsData } from '../lib/post';
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next';
 
-const a = 1;
-const b = 2;
+import Date from '../components/date';
+import Layout, { siteTitle } from '../components/layout';
+import { getSortedPostsData } from '../lib/post';
+import utilStyles from '../styles/utils.module.css';
+
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
@@ -19,7 +18,7 @@ export default function Home({ allPostsData }) {
       </section>
       <section className={utilStyles.headingMd}>
         <Link href={`/chatroom`}>
-          <a>进入聊天室aàaaaasdsadasfdsfasdfadsfasdgasdggdsddjhdsaß</a>
+          <a>进入聊天室</a>
         </Link>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>

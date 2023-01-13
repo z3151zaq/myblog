@@ -1,13 +1,13 @@
 import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
 import { serialize } from 'next-mdx-remote/serialize'
+import path from 'path';
+import rehypeHighlight from 'rehype-highlight';
+import { remark } from 'remark';
 // import { MDXRemote } from 'next-mdx-remote'
 // import remarkFrontmatter from 'remark-frontmatter' // YAML and such.
 import remarkGfm from 'remark-gfm' // Tables, footnotes, strikethrough, task lists, literal URLs.
-import rehypeHighlight from 'rehype-highlight';
+import html from 'remark-html';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
