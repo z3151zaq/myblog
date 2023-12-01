@@ -103,12 +103,12 @@ observableTodoStore.todos[0].task = "理解 MobX 教程"; // 无打印，因为r
 
 以下是使用类组件和类的编程范式:
 
-```js
+```ts
 
 //定义store
 import {observable, action} from 'mobx'
 
-export calss Home{
+export class Home{
     @observable
     name = "example"
 
