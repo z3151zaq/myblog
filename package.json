@@ -18,9 +18,7 @@
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
     "remark-highlight.js": "^7.0.1",
-    "remark-html": "^15.0.1",
-    "socket.io": "^4.5.4",
-    "socket.io-client": "^4.5.4"
+    "remark-html": "^15.0.1"
   },
   "devDependencies": {
     "@types/node": "^18.7.13",

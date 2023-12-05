@@ -16,11 +16,11 @@ export default function Home({ allPostsData }) {
       <section className={utilStyles.headingMd}>
         <p>一个肥宅lol</p>
       </section>
-      <section className={utilStyles.headingMd}>
+      {/* <section className={utilStyles.headingMd}>
         <Link href={`/chatroom`}>
           <a>进入聊天室</a>
         </Link>
-      </section>
+      </section> */}
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
