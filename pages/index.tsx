@@ -17,8 +17,8 @@ export default function Home({ allPostsData }) {
         <p>一个肥宅lol</p>
       </section>
       <section className={utilStyles.headingMd}>
-        <Link href={`/chatroom`}>
-          <a>俄罗斯方块</a>
+        <Link href={`/games/stepbystep/index.html`}>
+          <a>一步两步</a>
         </Link>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
