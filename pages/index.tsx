@@ -19,7 +19,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       allPostsData,
       allTags: uniq(
-        allPostsData.map(item => item.tags).filter(Boolean).flat()
+        allPostsData
+          .map(item => item.tags)
+          .filter(Boolean)
+          .flat()
       )
     }
   };
