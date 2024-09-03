@@ -4,8 +4,6 @@ import { serialize } from 'next-mdx-remote/serialize'
 import path from 'path';
 import rehypeHighlight from 'rehype-highlight';
 import { remark } from 'remark';
-// import { MDXRemote } from 'next-mdx-remote'
-// import remarkFrontmatter from 'remark-frontmatter' // YAML and such.
 import remarkGfm from 'remark-gfm' // Tables, footnotes, strikethrough, task lists, literal URLs.
 import html from 'remark-html';
 
@@ -28,7 +26,7 @@ export function getSortedPostsData() {
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data as { date: string; title: string },
+      ...matterResult.data as { date: string; title: string,tags?: string[] },
     };
   });
   // Sort posts by date
@@ -59,6 +57,7 @@ export async function getPostData(id: string) {
   const matterResult = matter(fileContents);
   const processedContent = await remark().use(html).process(matterResult.content);
   const contentHtml = processedContent.toString();
+  console.log('@@@', matterResult.data)
 
   const mdxSource = await serialize(fileContents,{ mdxOptions: {
       remarkPlugins: [remarkGfm],

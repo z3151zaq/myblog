@@ -1,6 +1,7 @@
 ---
 title: '为什么react重新渲染'
 date: '2022-08-29'
+tags: ['技术','react']
 ---
 **本文是[这篇文章](https://www.joshwcomeau.com/react/why-react-re-renders/)的翻译**
 ### react循环机制

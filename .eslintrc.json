@@ -1,34 +1,13 @@
 {
-  // "overrides": [
-  //   {
-  //     // 2. Enable the Markdown processor for all .md files.
-  //     "files": [
-  //       "**/*.md"
-  //     ],
-  //     "processor": "markdown/markdown"
-  //   },
-  //   {
-  //     // 3. Optionally, customize the configuration ESLint uses for ```js
-  //     // fenced code blocks inside .md files.
-  //     "files": [
-  //       "**/*.md/*.js"
-  //     ],
-  //     // ...
-  //     "rules": {
-  //       // ...
-  //     }
-  //   }
-  // ],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
   "plugins": [
-    // "markdown",
     "simple-import-sort",
     "prettier"
   ],
-  "extends": [
-    // "plugin:markdown/recommended",
-    "next/core-web-vitals",
-    "prettier"
-  ], //注释,
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error"
