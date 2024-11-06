@@ -4,10 +4,12 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 
+import { Button } from "@/components/ui/button";
+
 import Date from "../components/date";
 import Layout, { siteTitle } from "../components/layout";
 import { getSortedPostsData } from "../lib/post";
-import utilStyles from "../styles/utils.module.css";
+// import utilStyles from "../styles/utils.module.css";
 
 type Props = {
   allPostsData: ReturnType<typeof getSortedPostsData>;
@@ -35,28 +37,32 @@ export default function Home({ allPostsData, allTags }: Props) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>一个肥宅lol</p>
-      </section>
-      <section className={utilStyles.headingMd}>
+      <Button
+        onClick={() => {
+          console.log("@@@@click");
+        }}>
+        aaa
+      </Button>
+      <div className='text-3xl font-bold'>hello world</div>
+      <section>
         <Link href={`/games/stepbystep/index.html`}>一步两步</Link>
       </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+      <section>
+        <h2>Blog</h2>
         <a onClick={() => setFilter("")}>all</a>
         {allTags?.map(i => (
           <a onClick={() => setFilter(i)} key={i}>
             {i}
           </a>
         ))}
-        <ul className={utilStyles.list}>
+        <ul>
           {allPostsData
             .filter(post => (filter ? post.tags?.includes(filter) : true))
             .map(({ id, date, title }) => (
-              <li className={utilStyles.listItem} key={id}>
+              <li key={id}>
                 <Link href={`/posts/${id}`}>{title}</Link>
                 <br />
-                <small className={utilStyles.lightText}>
+                <small>
                   <Date dateString={date} />
                 </small>
               </li>

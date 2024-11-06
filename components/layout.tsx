@@ -1,17 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-
-import utilStyles from "../styles/utils.module.css";
-import styles from "./layout.module.css";
 
 const name = "熊熊熊熊熊🐻";
 export const siteTitle = "熊熊熊熊熊🐻";
 
 export default function Layout({ children, home }: { children: React.ReactNode; home?: boolean }) {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <link rel='icon' href='/images/avatar.png' />
         <meta name='description' content="XNY's personal website using Next.js" />
@@ -24,28 +20,26 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
         <meta name='og:title' content={siteTitle} />
         <meta name='twitter:card' content='summary_large_image' />
       </Head>
-      <header className={styles.header}>
+      <header>
         {home ? (
           <>
-            <Image priority src='/images/avatar.png' className={utilStyles.borderCircle} height={144} width={144} alt={name} />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <Image priority src='/images/avatar.png' height={144} width={144} alt={name} />
+            <h1>{name}</h1>
           </>
         ) : (
           <>
             <Link href='/'>
-              <Image priority src='/images/avatar.png' className={utilStyles.borderCircle} height={108} width={108} alt={name} />
+              <Image priority src='/images/avatar.png' height={108} width={108} alt={name} />
             </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href='/' className={utilStyles.colorInherit}>
-                {name}
-              </Link>
+            <h2>
+              <Link href='/'>{name}</Link>
             </h2>
           </>
         )}
       </header>
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div>
           <Link href='/'>← Back to home</Link>
         </div>
       )}
