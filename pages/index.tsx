@@ -39,7 +39,7 @@ export default function Home({ allPostsData, allTags }: Props) {
       </Head>
       <Button
         onClick={() => {
-          console.log("@@@@click");
+          console.log("@@@@clickaaa");
         }}>
         aaa
       </Button>
