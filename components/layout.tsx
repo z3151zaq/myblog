@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 const name = "熊熊熊熊熊🐻";
 export const siteTitle = "熊熊熊熊熊🐻";
