@@ -8,7 +8,7 @@ export const siteTitle = "熊熊熊熊熊🐻";
 
 export default function Layout({ children, home }: { children: React.ReactNode; home?: boolean }) {
   return (
-    <div>
+    <div className="ml-auto mr-auto max-w-2xl">
       <Head>
         <link rel='icon' href='/images/avatar.png' />
         <meta name='description' content="XNY's personal website using Next.js" />
@@ -24,8 +24,8 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
       <header>
         {home ? (
           <>
-            <Image priority src='/images/avatar.png' height={144} width={144} alt={name} />
-            <h1>{name}</h1>
+            <Image priority src='/images/avatar.png' height={144} width={144} alt={name} className="m-auto"/>
+            <h1 className="text-3xl font-bold text-center">{name}</h1>
           </>
         ) : (
           <>
