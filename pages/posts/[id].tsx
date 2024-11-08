@@ -21,9 +21,10 @@ export const getStaticProps: GetStaticProps = async ({ params: { id } }) => {
 
 export default function Post({ postData }) {
   return (
-    <Layout>
-      <Head>
+    <>
+    <Head>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css'></link>
+        <meta name="tailwind-disable" />
         <title>{postData.title}</title>
       </Head>
       <article>
@@ -34,6 +35,7 @@ export default function Post({ postData }) {
         {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} /> */}
         <MDXRemote {...postData.mdxSource} />
       </article>
-    </Layout>
+    </>
+      
   );
 }
