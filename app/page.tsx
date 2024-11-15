@@ -1,5 +1,4 @@
 import { uniq } from "lodash";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,7 +19,6 @@ export default async function Page() {
   );
   return (
     <>
-      
       <header>
         <Image priority src='/images/avatar.png' height={144} width={144} alt={name} className='m-auto' />
         <h1 className='text-3xl font-bold text-center'>{name}</h1>
