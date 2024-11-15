@@ -1,11 +1,11 @@
 import fs from "fs";
 import matter from "gray-matter";
-import { serialize } from "next-mdx-remote/serialize";
+// import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
-import rehypeHighlight from "rehype-highlight";
-import { remark } from "remark";
-import remarkGfm from "remark-gfm"; // Tables, footnotes, strikethrough, task lists, literal URLs.
-import html from "remark-html";
+// import rehypeHighlight from "rehype-highlight";
+// import { remark } from "remark";
+// import remarkGfm from "remark-gfm"; // Tables, footnotes, strikethrough, task lists, literal URLs.
+// import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -50,29 +50,30 @@ export function getAllPostIds() {
   });
 }
 
-export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf-8");
+// export async function getPostData(id: string) {
+//   const fullPath = path.join(postsDirectory, `${decodeURI(id)}.md`);
+//   // const fullPath = path.join(postsDirectory, `${id}.md`);
+//   const fileContents = fs.readFileSync(fullPath, "utf-8");
 
-  const matterResult = matter(fileContents);
-  const processedContent = await remark().use(html).process(matterResult.content);
-  const contentHtml = processedContent.toString();
-  console.log("@@@", matterResult.data);
+//   const matterResult = matter(fileContents);
+//   const processedContent = await remark().use(html).process(matterResult.content);
+//   const contentHtml = processedContent.toString();
+//   console.log("@@@", matterResult.data);
 
-  const mdxSource = await serialize(fileContents, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypeHighlight],
-      format: "mdx"
-    },
-    parseFrontmatter: true
-  });
+//   const mdxSource = await serialize(fileContents, {
+//     mdxOptions: {
+//       remarkPlugins: [remarkGfm],
+//       rehypePlugins: [rehypeHighlight],
+//       format: "mdx"
+//     },
+//     parseFrontmatter: true
+//   });
 
-  // Combine the data with the id and contentHtml
-  return {
-    id,
-    contentHtml,
-    ...matterResult.data,
-    mdxSource
-  };
-}
+//   // Combine the data with the id and contentHtml
+//   return {
+//     id,
+//     contentHtml,
+//     ...matterResult.data,
+//     mdxSource
+//   };
+// }

@@ -1,3 +1,5 @@
+import "./atom-one-dark.css"
+
 import React from "react"
 
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
