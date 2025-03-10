@@ -1,4 +1,8 @@
-# React Interview Questions and Answers
+---
+title: "React questions"
+date: "2025-03-11"
+tags: ["interview"]
+---
 
 ## 1. What is React?
 

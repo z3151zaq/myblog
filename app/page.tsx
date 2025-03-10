@@ -29,6 +29,16 @@ export default async function Page() {
           <Card className='w-1/2 p-0'>
             <CardHeader>
               <CardTitle>
+                <Link href='/cv.html' className='p-0 text-lg hover:underline'>
+                  My CV
+                </Link>
+              </CardTitle>
+              <CardDescription>My personal cv.</CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className='w-1/2 p-0'>
+            <CardHeader>
+              <CardTitle>
                 <Link href='/games/stepbystep/index.html' className='p-0 text-lg hover:underline'>
                   One Step Two Step
                 </Link>
