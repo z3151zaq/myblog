@@ -25,8 +25,8 @@ export default async function Page() {
       </header>
       <section>
         <div className='text-2xl font-bold'>Some Demo</div>
-        <div className='flex gap-4'>
-          <Card className='w-1/2 p-0'>
+        <div className='flex flex-wrap gap-2'>
+          <Card className='w-80 p-0'>
             <CardHeader>
               <CardTitle>
                 <Link href='/cv.html' className='p-0 text-lg hover:underline'>
@@ -36,7 +36,7 @@ export default async function Page() {
               <CardDescription>My personal cv.</CardDescription>
             </CardHeader>
           </Card>
-          <Card className='w-1/2 p-0'>
+          <Card className='w-80 p-0'>
             <CardHeader>
               <CardTitle>
                 <Link href='/games/stepbystep/index.html' className='p-0 text-lg hover:underline'>
@@ -44,6 +44,16 @@ export default async function Page() {
                 </Link>
               </CardTitle>
               <CardDescription>A demo game using Cocos engine.</CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className='w-80 p-0'>
+            <CardHeader>
+              <CardTitle>
+                <Link href='/outdoorRent' className='p-0 text-lg hover:underline'>
+                  oudoorRent
+                </Link>
+              </CardTitle>
+              <CardDescription>A ASP.NET core program.</CardDescription>
             </CardHeader>
           </Card>
         </div>
