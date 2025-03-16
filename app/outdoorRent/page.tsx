@@ -14,8 +14,7 @@ import {
   Divider, 
   Form, 
   Input, 
-  message, 
-  Space, 
+  message,
   Tabs, 
   Typography} from 'antd';
 import React, { useState } from 'react';
