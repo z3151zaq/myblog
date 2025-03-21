@@ -1,9 +1,9 @@
 import axios from "axios";
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 // 创建 axios 实例
@@ -11,13 +11,13 @@ const request = axios.create({
   baseURL: "/api", // 设置请求的基础路径
   timeout: 10000, // 请求超时时间
   headers: {
-    "Content-Type": "application/json", // 默认请求头
-  },
+    "Content-Type": "application/json" // 默认请求头
+  }
 });
 
 // 请求拦截器
 request.interceptors.request.use(
-  (config) => {
+  config => {
     // 在发送请求之前可以做些什么，例如添加认证token
     const token = localStorage.getItem("token"); // 假设 token 存储在 localStorage 中
     if (token) {
@@ -25,7 +25,7 @@ request.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
+  error => {
     // 对请求错误做些什么
     return Promise.reject(error);
   }
@@ -33,11 +33,11 @@ request.interceptors.request.use(
 
 // 响应拦截器
 request.interceptors.response.use(
-  (response) => {
+  response => {
     // 对响应数据做点什么
     return response.data; // 直接返回响应数据
   },
-  (error) => {
+  error => {
     // 对响应错误做点什么
     console.error("请求失败:", error);
     if (error.response) {
@@ -55,4 +55,4 @@ request.interceptors.response.use(
   }
 );
 
-export { request }
+export { request };

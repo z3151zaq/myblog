@@ -9,7 +9,7 @@ import React from "react";
 
 const siteTitle = "熊熊熊熊熊🐻";
 
-export default function RootLayout({ children }: { children: React.ReactNode; }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html>
       <Head>
@@ -27,9 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode; })
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css'></link>
       </Head>
       <body>
-        <main className='mx-auto max-w-2xl'>
-         {children}
-        </main>
+        <main className='mx-auto max-w-2xl'>{children}</main>
       </body>
     </html>
   );

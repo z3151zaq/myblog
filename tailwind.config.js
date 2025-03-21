@@ -5,7 +5,7 @@ module.exports = {
     "./pages/**/*.{ts,tsx}",
     '!./pages/**/*.{ts,tsx} meta[name="tailwind-disable"]',
     "./components/**/*.{ts,tsx}",
-    './app/**/*.{ts,tsx}',
+    "./app/**/*.{ts,tsx}"
     // './src/**/*.{ts,tsx}',
   ],
   prefix: "",
