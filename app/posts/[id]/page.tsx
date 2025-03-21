@@ -4,7 +4,7 @@ import { getAllPostIds } from "@/lib/post";
 
 export async function generateStaticParams() {
   const paths = getAllPostIds();
-  return paths.map(i => i.params);
+  return paths.map((i) => i.params);
 }
 
 export default async function Post({ params }) {
