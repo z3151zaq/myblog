@@ -35,7 +35,7 @@ export default async function Page() {
         />
         <h1 className="text-3xl font-bold text-center">{name}</h1>
       </header>
-      <section>
+      <section className="mx-auto max-w-2xl">
         <div className="text-2xl font-bold">Some Demo</div>
         <div className="flex flex-wrap gap-2">
           <Card className="w-80 p-0">

@@ -4,6 +4,7 @@ export const metadata = {
 };
 import "../global.css";
 
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Head from "next/head";
 import React from "react";
 
@@ -37,7 +38,7 @@ export default function RootLayout({
         ></link>
       </Head>
       <body>
-        <main className="mx-auto max-w-2xl">{children}</main>
+        <AntdRegistry>{children}</AntdRegistry>
       </body>
     </html>
   );
