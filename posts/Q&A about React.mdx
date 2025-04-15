@@ -56,9 +56,9 @@ The useState hook in React is used to manage state in functional components. It 
 
 **Answer:**
 
-- componentDidMount() -> useEffect(() => {...}, [])
-- componentDidUpdate() -> useEffect(() => {...}, [dependencies])
-- componentWillUnmount() -> useEffect(() => { return () => {...}; }, [])
+- `componentDidMount() -> useEffect(() => {...}, [])`
+- `componentDidUpdate() -> useEffect(() => {...}, [dependencies])`
+- `componentWillUnmount() -> useEffect(() => { return () => {...}; }, [])`
 
 ## 8. Virtual DOM: What is the Virtual DOM, and how does React use it to optimize performance?
 
@@ -111,7 +111,7 @@ The Virtual DOM (VDOM) is a lightweight JavaScript representation of the actual 
 ## 12. React Router: How does React Router handle navigation without causing a full-page reload?
 
 - React Router leverages the History API (pushState and replaceState) to update the URL without triggering a full-page reload. Instead of sending a request to the server, React Router intercepts navigation events and dynamically updates the UI within the single-page application (SPA).
-  - When a user clicks a <Link> component, React Router prevents the default browser behavior (which would normally trigger a full reload).
+  - When a user clicks a {'<Link>'} component, React Router prevents the default browser behavior (which would normally trigger a full reload).
   - It modifies the URL using window.history.pushState(), allowing users to navigate without refreshing the page.
   - React Router listens for URL changes and dynamically loads the corresponding React component, rather than reloading the entire HTML page.
 

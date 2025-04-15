@@ -15,7 +15,7 @@ export default function Home({ allPostsData, allTags }: Props) {
   const [filter, setFilter] = useState("all");
   const router = useRouter();
   return (
-    <section className="mt-4">
+    <section className="mt-4 mx-auto max-w-2xl">
       <div className="flex gap-5">
         <span className="text-2xl font-bold">My Articles</span>
         <Tabs onValueChange={setFilter} value={filter}>

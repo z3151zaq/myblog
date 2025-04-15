@@ -1,0 +1,421 @@
+---
+title: 'Learning asp.net in 3 months'
+date: '2025-03-28'
+tags: ['interview']
+---
+
+### OOP, c#, .net core concepts
+
+#### enum in C#
+
+- can only be int
+- use [EnumMember(Value = "excellent")] in System.Text.Json.Serialization to let the field transform into string in json
+- `use method in Entity HasConversion<string>() to let it stored as string in database`
+- string to enum:
+
+---
+
+#### struct in C#
+
+- struct is a value type stored on the stack (not heap) a value not a reference.
+- Does not support inheritance, but can implement interfaces.
+- Automatically initializes fields with default values.
+- Faster for small, frequently used objects.
+- Use readonly struct to ensure immutability.
+
+---
+
+#### out param in C#
+
+- out allows a method to return multiple values.
+- out parameters must be assigned a value before returning.
+  Commonly used in methods like TryParse().
+- C# 7.0 introduced **out var** for cleaner syntax.
+- Unlike ref, out does not require the variable to be initialized before passing it.
+
+#### delegate in C#
+
+- In C#, a **delegate** is a type that references a method. It is similar to a **function pointer** in C or C++, allowing methods to be passed as parameters and invoked dynamically. Delegates are type-safe and secure.
+- as callback, fundalmention of event system.
+- **Type-safe**: Delegates hold references to methods with a specific signature.
+- **Flexible**: You can pass methods as arguments, store them in variables, and invoke them.
+- **Multicast**: A delegate can reference multiple methods, and they can be invoked sequentially.
+- predict,
+
+#### what's OOP
+
+- abstraction:
+- class and object: an object is an instance of a class
+- Encapsulation: encapsulate data and methods into a class. Hide the implemrntation details in class, and provide api for people to use.
+- Inheritance: One class can inherit non-private fields and methods from another to reuse code. Additions.
+- Polymorphism: One method behaves differently in different scenarios (overriding or overloading).
+
+#### What is dependency injection, and why is it important?
+
+#### What is Dependency Injection and how is it implemented in .NET Core?
+
+Dependency Injection (DI) is a design pattern used in C# and .NET to achieve Inversion of Control (IoC) between classes and their dependencies. Instead of creating dependencies inside a class, they are injected from the outside, making the code more flexible, testable, and maintainable.
+
+- Loose Coupling – Classes are less dependent on specific implementations.
+- Easier Unit Testing – Dependencies can be replaced with mock objects.
+- Better Code Maintainability – Changing one component doesn't affect others.
+- Improved Scalability – Easy to extend functionality without modifying existing code.
+
+#### What is Garbage Collection (GC) in .NET, and how does it work?
+
+- Generation 0 (Short-lived objects) – Objects that are created and removed quickly.
+- Generation 1 (Medium-lived objects) – Objects that survive Generation 0 collection.
+- Generation 2 (Long-lived objects) – Objects that persist for a long time, like static data.
+
+- Marking Phase: The GC traverses the object graph starting from known root objects (e.g., global variables, stack objects) and marks all reachable objects. Unreachable objects are marked for collection.
+- Compacting Phase: The GC rearranges the memory, compacting live objects to reduce fragmentation. This step is optional and more common in full garbage collections involving Generation 2.
+- Memory occupied by unreachable objects is released, making it available for new allocations.
+
+- GC.col
+
+#### Explain the differences between value types and reference types.
+
+#### What is the difference between value types and reference types in C#?
+
+| Feature           | Value Type                                | Reference Type                                   |
+| ----------------- | ----------------------------------------- | ------------------------------------------------ |
+| **Stored In**     | **Stack** (fast access)                   | **Heap** (managed by GC)                         |
+| **Holds**         | Actual data                               | Reference (memory address)                       |
+| **Assignment**    | Copies the value                          | Copies the reference                             |
+| **Example Types** | `int`, `double`, `bool`, `struct`, `enum` | `class`, `string`, `array`, `object`, `delegate` |
+| **Default Value** | Zero/default value                        | `null`                                           |
+| **Performance**   | Faster (small data)                       | Slower (larger objects)                          |
+
+#### what's the difference between interface and abstract class?
+
+In C#, both **interfaces** and **abstract classes** are used to define a blueprint for other classes, but they have key differences.
+
+| Feature                  | Interface                                                   | Abstract Class                                                                |
+| ------------------------ | ----------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Definition**           | A contract that defines only method signatures              | A class that can have both abstract and concrete methods                      |
+| **Methods**              | Only method signatures (no implementation)                  | Can have both abstract (no implementation) and concrete (implemented) methods |
+| **Fields/Properties**    | No fields, only properties (no backing fields)              | Can have fields, properties, and constructors                                 |
+| **Access Modifiers**     | Methods are always `public` by default                      | Methods can have `private`, `protected`, `public`, etc.                       |
+| **Constructors**         | No constructors                                             | Can have constructors                                                         |
+| **Multiple Inheritance** | A class can implement multiple interfaces                   | A class can inherit from only one abstract class                              |
+| **Usage**                | Used when multiple classes need to follow the same contract | Used when different classes share common behavior                             |
+
+#### what's the difference between fields and properties in class?
+
+| Feature              | Field                                | Property                                                 |
+| -------------------- | ------------------------------------ | -------------------------------------------------------- |
+| **Definition**       | A variable that directly stores data | A wrapper around a field that provides controlled access |
+| **Encapsulation**    | No control over value changes        | Can include logic for validation, lazy loading, etc.     |
+| **Access Modifiers** | Can be `public`, `private`, etc.     | Can have different access levels for `get` and `set`     |
+| **Usage**            | Used for internal class data         | Used for controlled data access with `get` and `set`     |
+| **Example**          | `private int age;`                   | `public int Age { get; set; }`                           |
+
+#### what is the differences between class/struct/record/record struct?
+
+| Feature                         | `class`                       | `record`               | `struct`                | `record struct`                         |
+| ------------------------------- | ----------------------------- | ---------------------- | ----------------------- | --------------------------------------- |
+| **Reference Type?**             | ✅ Yes                        | ✅ Yes                 | ❌ No (value type)      | ❌ No (value type)                      |
+| **Stored in Heap or Stack?**    | 🔴 Heap                       | 🔴 Heap                | ✅ Stack                | ✅ Stack                                |
+| **Default Mutability?**         | ✅ Mutable                    | ❌ Immutable           | ✅ Mutable              | ❌ Immutable                            |
+| **Comparison Type**             | 🔴 Reference Equality         | ✅ Value Equality      | ✅ Value Equality       | ✅ Value Equality                       |
+| **Supports Inheritance?**       | ✅ Yes                        | ✅ Yes                 | ❌ No                   | ❌ No                                   |
+| **Supports `with` Expression?** | ❌ No                         | ✅ Yes                 | ❌ No                   | ✅ Yes                                  |
+| **Best for?**                   | Complex objects with behavior | Immutable data objects | Lightweight value types | Lightweight structs with value equality |
+
+#### what is the differences between string and StringBuilder?
+
+| **Feature**           | **`string`**                                                             | **`StringBuilder`**                                                      |
+| --------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| **Immutability**      | Immutable (once created, cannot be modified)                             | Mutable (can be modified without creating new object)                    |
+| **Performance**       | Inefficient for repeated modifications (creates new object each time)    | More efficient for frequent changes (modifies in place)                  |
+| **Memory Allocation** | Creates a new object each time a modification is made                    | Reuses allocated memory, reducing overhead                               |
+| **Use Case**          | Good for small, fixed-length strings or when concatenation is infrequent | Ideal for large text manipulations or frequent concatenations            |
+| **Thread Safety**     | Not thread-safe (when modified)                                          | Not thread-safe (when modified)                                          |
+| **Methods**           | Has a limited set of methods for manipulation                            | Provides a wide range of methods like `Append`, `Insert`, `Remove`, etc. |
+| **Default Behavior**  | Automatically resizes itself when needed                                 | Expands size as needed but with less overhead                            |
+
+#### What's the pros and cons of using x
+
+| **Concept**                          | **Pros ✅**                                                                       | **Cons ❌**                                                                                  |
+| ------------------------------------ | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **Structs (`struct`)**               | Faster (stack memory), No GC overhead, Value type (no reference sharing issues)   | Copied on assignment (can be inefficient), No inheritance, Limited flexibility               |
+| **Classes (`class`)**                | Supports inheritance, Reference type (efficient for large objects), More flexible | Heap allocation (slower than stack), Requires garbage collection                             |
+| **Interfaces (`interface`)**         | Allows multiple inheritance (flexibility), Enforces a contract                    | Cannot have fields (before C# 8.0), Requires explicit implementation in each class           |
+| **Abstract Classes**                 | Can have fields, constructors, and implemented methods, Good for shared behavior  | Only supports single inheritance, Less flexible than interfaces for multiple implementations |
+| **Properties (`get/set`)**           | Encapsulation, Allows validation logic, Controls data access                      | Slightly more overhead than public fields, Requires more code than simple fields             |
+| **Readonly vs Const**                | `readonly`: Can be set at runtime, More flexible                                  | `const`: Faster but cannot be changed at runtime                                             |
+| **Static Classes (`static`)**        | No need for instantiation, Shared across all instances                            | Cannot inherit or implement interfaces, No instance-specific data                            |
+| **Garbage Collection (GC)**          | Automatic memory management, Prevents memory leaks                                | Performance overhead, Unpredictable when GC will run                                         |
+| **`var` vs Explicit Types**          | `var`: Reduces code verbosity, Easier to use                                      | Harder to read/debug, Type inference may be unclear                                          |
+| **`dynamic` vs `object`**            | `dynamic`: Flexibility, Works well with COM/Reflection                            | No compile-time safety, Runtime errors possible                                              |
+| **String vs StringBuilder**          | `StringBuilder`: Better for frequent modifications                                | `String`: Immutable, causes memory overhead                                                  |
+| **LINQ (`IEnumerable<T>`)**          | Concise, Readable, Works with different data sources                              | Slightly slower than manual loops, Deferred execution can be tricky                          |
+| **Multithreading (`Thread`)**        | Can utilize multiple CPU cores, Parallel execution                                | Difficult to manage, Risk of deadlocks                                                       |
+| **Tasks (`Task` in async/await)**    | Easier async programming, Non-blocking                                            | More complex debugging, Harder to handle exceptions                                          |
+| **Reflection (`System.Reflection`)** | Allows dynamic inspection, Useful for plugins                                     | Slow, Can break encapsulation, Harder to maintain                                            |
+| **Dependency Injection (DI)**        | Loose coupling, Easier unit testing                                               | Adds complexity, More setup required                                                         |
+| **ORMs (like Entity Framework)**     | Simplifies database access, Reduces boiler                                        |
+
+### About .NET concepts
+
+#### What are the main features of .NET Core?
+
+- main feature: cross-platform. You can build and run applications on Windows, Linux, and macOS using .NET Core.
+- optimize
+- High Performance & Scalability: used by azure and Bing
+- Modular & Lightweight
+- Open Source
+- Unified Development Model (after .NET 5): Supports web, desktop, mobile, cloud, and more under a single platform.
+- Side-by-Side Versioning
+- Command-Line Interface (CLI)
+- Dependency Injection Built-In
+
+#### What is .NET Core and how is it different from the .NET Framework?
+
+- Platform Support
+- Performance & Scalability: .NET Core is lighter and iptimized for microservices and scalable web applications. .NET Core can be run with differnet versions side-by-side in the same machine.
+- Open Source & Community
+- Deployment
+
+#### Explain the role of the Common Language Runtime (CLR).
+
+The CLR is the execution engine that runs your .NET code. It provides essential services like memory management, security, exception handling, and more.
+
+How it workds?
+
+- You write C# code
+- It compiles to CIL (Common Intermediate Language) or MSIL,like .dll files
+- CLR uses the JIT compiler to convert CIL → native machine code excuted by cpu
+- CLR executes it and manages runtime features like memory, security, etc.
+
+#### What are the different service lifetimes in .NET Core (Transient, Scoped, Singleton)?
+
+- Transient: Every time requested Never reused
+  - The service is lightweight.
+  - It doesn’t maintain any state.
+  - You don’t need to share it across requests or components.
+  - Formatters, String utilities, Email senders (unless they maintain connections)
+- Scoped: Once per HTTP request, Reused within the request:
+  - Database contexts (e.g., DbContext in Entity Framework Core).
+  - Business logic that should persist during one web request.
+- Singleton: One instance for the entire application lifetime. Reused everywhere.
+  - logger
+  - IMemoryCache
+  - IHttpContextAccessor
+
+#### What is Middleware in ASP.NET Core and how do you create custom middleware?
+
+- What: Middleware is a piece of software that handles requests and responses as they move through the pipeline.
+  middleware - handle
+
+Explain how migrations work in EF Core.
+
+#### What is the difference between IEnumerable and IQueryable in LINQ?
+
+| Feature            | `IEnumerable`                                       | `IQueryable`                             |
+| ------------------ | --------------------------------------------------- | ---------------------------------------- |
+| Namespace          | `System.Collections` / `System.Collections.Generic` | `System.Linq`                            |
+| Executes On        | Client-side (in memory)                             | Server-side (e.g., database)             |
+| Query Execution    | Immediate or deferred (in-memory)                   | Deferred (translated to SQL, etc.)       |
+| Data Source        | In-memory collections (e.g., List, Array)           | Remote sources (e.g., EF, LINQ to SQL)   |
+| Filtering Location | In memory (after loading data)                      | At the source (before loading data)      |
+| SQL Translation    | ❌ Not supported                                    | ✅ Supported                             |
+| Use Case           | LINQ to Objects                                     | LINQ to SQL, Entity Framework, etc.      |
+| Performance        | Less efficient with large datasets                  | More efficient for large remote datasets |
+
+#### How does the request pipeline work in ASP.NET Core?
+
+The request pipeline in ASP.NET Core is a sequence of middleware components that process HTTP requests and responses. It’s designed to be **modular, lightweight, and customizable**, allowing you to control how requests are handled and responses are generated.
+
+- HTTP Request Received: The web server (like Kestrel or IIS) forwards the request to the ASP.NET Core app.
+- Middleware Execution
+- Routing Middleware
+- Endpoint Execution
+- Response Flows Back
+- the onion model: in the response handle phase, the last middleware would be called first
+
+#### What is Kestrel and how does it work in ASP.NET Core?
+
+Kestrel is the cross-platform web server that’s built into ASP.NET Core.
+
+- Listening for HTTP requests
+- pass requests to .NET Core request pipeline
+- Returning the HTTP responses back to the client
+- self-hosting or behind reverse proxy
+
+#### How do you implement routing in ASP.NET Core
+
+#### How does routing work in ASP.NET Core?
+
+Routing is responsible for matching incoming HTTP requests and dispatching those requests to the app's executable endpoints.
+
+- coventional routing: Uses predefined patterns like `{controller}/{action}/{id?}`
+- Attribute Routing: Adds route patterns directly to controllers/actions
+
+#### What is SignalR and how do you use it in a .NET Core app?
+
+SignalR is a real-time communication library over WebSocket for ASP.NET Core. It lets your server push updates to connected clients instantly—like chat messages, notifications, or live data updates—without the client needing to refresh or poll.
+
+#### What is the purpose of appsettings.json? How do you access configuration values?
+
+It holds application settings in a structured format.
+Be uesed both in starup time and in services.
+
+- in starup time: builder.Configuration
+- in services: denpendencies injection: IConfiguration
+
+#### What is Model Binding in ASP.NET Core?
+
+Model Binding is the process where ASP.NET Core automatically maps HTTP request data (from query strings, forms, route values, headers, JSON bodies, etc.) to your C# method parameters or objects. We don’t need to parse things manually — the framework does it for you.
+
+- route: [FromRote]
+- body: [FromBody]
+- query: [FromQuery]
+- form: [FromForm]
+- header: [FromHeader]
+- service/dependency: [FromServices]
+
+### What is Model Validation and how is it handled?
+
+Model Validation is the process of ensuring that the data provided by the client (either via form data, query parameters, or body) meets the expectations of our application before it is processed. In ASP.NET Core, model validation is typically done by applying **validation attributes** on model properties, and ASP.NET Core automatically performs validation when the model is bound to the controller method.
+
+If validation fails, the framework automatically adds validation errors to the ModelState dictionary.
+
+```C#
+[HttpPost]
+public IActionResult CreateUser([FromBody] UserModel user)
+{
+    if (!ModelState.IsValid)
+    {
+        // Return bad request with validation errors
+        return BadRequest(ModelState);
+    }
+
+    // If the model is valid, perform further actions like saving the user
+    return Ok($"User {user.Name} created successfully!");
+}
+```
+
+#### How do you handle exceptions globally in ASP.NET Core?
+
+- middleware: app.UseExceptionHandler(), navatigate to a default error page. We can also customize one.
+  - development env: UseDeveloperExceptionPage
+- filter: custimize a filter, and add it globally. Implementing the OnException method.
+- ProblemDetails
+
+#### What are filters in ASP.NET Core (Action, Authorization, Exception, Result)?
+
+Filters are a powerful mechanism that allows you to add pre- and post-processing logic around the execution of controller actions.
+
+- Authorization Filters: OnAuthorization
+- Action Filters: OnActionExecuting and OnActionExcuted
+- Exception Filters: OnException
+- Result Filters: OnResultExecuting, OnResultExecuted
+
+#### How do you implement authentication in ASP.NET Core?
+
+- cookie
+- jwt token
+- third party authentication
+
+#### What is JWT and how is it used for securing APIs in .NET Core?
+
+JWT (JSON Web Token) is an open standard (RFC 7519) for securely transmitting information between two parties as a JSON object. This information can be verified and trusted because it is digitally signed.
+
+- Header: Contains metadata about the token, including the signing algorithm
+- Payload: Contains the claims, which are statements about the user or data (e.g., user ID, roles). Claims can be predefined (like iss, sub, exp) or custom (like role).
+- Signature: Ensures that the token has not been tampered with. It is created by signing the header and payload with a secret key or a private key (in asymmetric encryption).
+
+why use JWT
+
+- Stateless
+- Secure
+- Flexible: both used in authentication and authorization
+- Cross-platform
+
+#### What is the difference between var, dynamic, and object in C#?
+
+| Feature                  | `var`                          | `dynamic`                           | `object`                            |
+| ------------------------ | ------------------------------ | ----------------------------------- | ----------------------------------- |
+| **Type Resolution**      | Compile-time                   | Runtime                             | Compile-time                        |
+| **Type Safety**          | ✅ Yes (strong typing)         | ❌ No (errors at runtime possible)  | ✅ Yes (with casting)               |
+| **Requires Casting?**    | ❌ No                          | ❌ No                               | ✅ Yes (to access specific members) |
+| **IntelliSense Support** | ✅ Yes                         | ❌ No                               | ✅ Yes (after cast)                 |
+| **Flexibility**          | Limited (must infer a type)    | High (accepts any type)             | Medium                              |
+| **Use Case**             | When type is known or inferred | Working with JSON, reflection, COM  | General-purpose variables           |
+| **Performance**          | Fast (no runtime resolution)   | Slower (uses reflection at runtime) | Normal (requires boxing/unboxing)   |
+
+#### What is extension method in C#?
+An extension method in C# is a way to add new functionality to an existing type without modifying the original type itself. It allows you to "extend" types with additional methods, even if you don't have access to the source code of the type, and without creating a derived class.
+- must be static method in static classed
+- first param must be this
+- No Modification of Original Type
+
+#### What are delegates, events, and lambdas in C#?
+- delegate:
+- events: An event is a special kind of delegate that follows the publisher/subscriber model. It's used to notify other parts of the application when something happens.
+- lamdas: A lambda expression is an inline, anonymous function. It's a clean way to create delegates or pass behavior (especially for LINQ or event handlers).
+
+
+#### What is the use of the async and await keywords?
+#### What is the difference between Task, async/await, and Thread?
+
+
+How do you register services in the Startup.cs file?
+
+How do you implement logging in .NET Core?
+
+
+
+
+
+How do you use Entity Framework Core with .NET Core?
+
+What are migrations in EF Core and how do you apply them?
+
+What is the difference between Claims-based and Role-based authorization?
+
+How do you version a Web API in ASP.NET Core?
+
+How do you write unit tests for a controller in ASP.NET Core?
+
+How do you mock dependencies using interfaces in unit tests?
+
+What is Clean Architecture? How do you implement it in .NET Core?
+
+What are some common design patterns used in .NET Core projects?
+
+How do you handle multiple environments in .NET Core (dev, staging, production)?
+
+What is a strongly-typed configuration in .NET Core?
+
+How do you secure sensitive information such as connection strings?
+
+How does garbage collection work in .NET?
+
+What is the using statement in C#?
+
+What are nullable reference types in C# 8+?
+
+What are records in C# 9.0 and how do they differ from classes?
+
+How do you implement file uploads in ASP.NET Core?
+
+How do you return a file download in a Web API controller?
+
+How do you optimize performance in an ASP.NET Core application?
+
+What are the key differences between synchronous and asynchronous programming in .NET?
+
+
+dispose, final, with
+mangaged and unmanaged resources: external library;
+linQ: handle data manipulation
+
+async/await: without blocking concurrent. 传染性. concurrent proccessing
+
+- 解决的问题
+- 用法
+- 举例子
+
+What is the purpose of the .NET Standard?
