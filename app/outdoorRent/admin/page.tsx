@@ -1,5 +1,3 @@
-"use client";
-
 const IndexPage = () => {
   return <div>welcome</div>;
 };

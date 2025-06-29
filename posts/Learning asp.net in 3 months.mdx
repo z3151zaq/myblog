@@ -203,12 +203,7 @@ How it workds?
   - IMemoryCache
   - IHttpContextAccessor
 
-#### What is Middleware in ASP.NET Core and how do you create custom middleware?
 
-- What: Middleware is a piece of software that handles requests and responses as they move through the pipeline.
-  middleware - handle
-
-Explain how migrations work in EF Core.
 
 #### What is the difference between IEnumerable and IQueryable in LINQ?
 
@@ -360,6 +355,9 @@ An extension method in C# is a way to add new functionality to an existing type 
 #### What is the use of the async and await keywords?
 #### What is the difference between Task, async/await, and Thread?
 
+#### What is Navigation Property in ef?
+A navigation property is a property on an entity that allows navigation to related entities.
+
 
 How do you register services in the Startup.cs file?
 
@@ -419,3 +417,47 @@ async/await: without blocking concurrent. 传染性. concurrent proccessing
 - 举例子
 
 What is the purpose of the .NET Standard?
+
+### Middleware in ASP.NET Core
+
+#### What is Middleware in ASP.NET Core and how do you create custom middleware?
+Middleware is a software component in the ASP.NET Core request pipeline that can inspect, modify, or handle HTTP requests and responses. It’s used for cross-cutting concerns like authentication, logging, routing, exception handling, etc.
+
+#### How is Middleware executed in the pipeline?
+Middleware runs in the order it is registered for incoming requests, and the response flows back in the reverse order. 
+
+#### 
+### Other Conception in ASP.NET Core
+#### Explain how migrations work in EF Core.
+
+#### What is reflection in .NET and how is it used?
+Reflection is the ability of a program to inspect and interact with its own structure, metadata, and behavior at runtime. In .NET, reflection allows you to:
+- Inspect types, methods, properties, and fields of classes.
+- Dynamically create instances of types.
+- Invoke methods and access properties/fields dynamically.
+```C#
+using System;
+using System.Reflection;
+
+class Program
+{
+    static void Main()
+    {
+        // 获取类型
+        Type personType = typeof(Person);
+
+        // 创建实例
+        object personInstance = Activator.CreateInstance(personType);
+
+        // 设置属性值
+        PropertyInfo nameProperty = personType.GetProperty("Name");
+        nameProperty.SetValue(personInstance, "Alice");
+
+        // 调用方法
+        MethodInfo greetMethod = personType.GetMethod("Greet");
+        greetMethod.Invoke(personInstance, new object[] { "Hello!" });
+
+        // 输出: Alice says: Hello!
+    }
+}
+```

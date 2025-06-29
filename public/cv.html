@@ -38,12 +38,11 @@
     }
 
     .block {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     .block h2 {
       border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
     }
 
     .time-range {
@@ -63,14 +62,17 @@
       padding-bottom: 10px;
       border-bottom: 1px solid #ccc;
     }
+
     .experience .job p,
     .project .project-item p {
       margin: 0;
     }
-    .desc{
+
+    .desc {
       color: #6d6a6a;
       font-size: 14px;
     }
+
     .tech-stack {
       margin: 10px 0;
     }
@@ -87,9 +89,14 @@
       padding: 5px 10px;
       border-radius: 5px;
     }
+
     ul {
       margin-top: 0;
       margin-bottom: 0;
+    }
+
+    .degree {
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -97,28 +104,39 @@
 <body>
   <div class="container">
     <h1>Winnie Xiong</h1>
+    <div style="display: flex; gap: 12px;">
+      <span>Phone: 022-6491811</span>
+      <span>|</span>
+      <span>E-mail: <a href="mailto:winniexny@gmail.com">winniexny@gmail.com</a></span>
+    </div>
+    <div style="display: flex; gap: 12px;">
+      <span>Blog:
+        <a href="https://myblog-fawn-phi.vercel.app" target="_blank">https://myblog-fawn-phi.vercel.app</a>
+      </span>
+      <span>|</span>
+      <span>GitHub: <a href="https://github.com/z3151zaq" target="_blank">https://github.com/z3151zaq</a></span>
+    </div>
     <div class="contact-info">
-      <div style="display: flex; gap: 12px;">
-        <span>Phone: 022-6491811</span>
-        <span>E-mail: <a href="mailto:winniexny@gmail.com">winniexny@gmail.com</a></span>
-      </div>
+
+
     </div>
     <div class="block" href="#about-me">
       <h2>ABOUT ME</h2>
-      <p><strong>Career Summary:</strong> Data Analyst (3yrs) -> Frontend Developer (3yrs) -> Full Stack Developer (now)</p>
+      <p><strong>Career Summary:</strong> Data Analyst (3yrs) -> Frontend Developer (3yrs) -> Full Stack Developer (now)
+      </p>
       <p><strong>Main Tech Stack:</strong> JavaScript, HTML, CSS, React, C#, ASP.NET core, SQL Server, MySQL, MongoDB
       </p>
       <p><strong>Certificate:</strong> RHCE, PMP</p>
     </div>
     <div class="block" href="#education">
       <h2>EDUCATION</h2>
-      <p class="degree">
+      <div class="degree">
         <div class="time-range">
           <h3>University of Auckland</h3>
           <div>Mar 2025 - Mar 2026</div>
         </div>
         <div>Master's Degree in Information Technology</div>
-      </p>
+      </div>
       <div class="degree">
         <div class="time-range">
           <h3>Jinan University</h3>
@@ -158,13 +176,13 @@
         <p style="margin-top: 10px;"><strong>Project Experience - Lingxi Games Achievement System</strong></p>
         <p><strong>Background:</strong> Record and track employee achievements using an in-game system.</p>
         <p>
-          <strong>Main functions and modules:</strong> 
-          <ul>
-            <li>Users and permissions management</li>
-            <li>Data anomaly detection</li>
-            <li>Task and achievement management</li>
-            <li>Data visualization</li>
-          </ul>
+          <strong>Main functions and modules:</strong>
+        <ul>
+          <li>Users and permissions management</li>
+          <li>Data anomaly detection</li>
+          <li>Task and achievement management</li>
+          <li>Data visualization</li>
+        </ul>
         </p>
         <p><strong>Main technology stack:</strong> React, Dingtalk Mini app, Ant Design, UmiJS, NodeJS, Midway.</p>
         <p>
@@ -198,13 +216,13 @@
         <p><strong>Project Experience - Xinbao Data Sharing Platform</strong></p>
         <p><strong>Project background:</strong> Enable sales and R&D departments to quickly obtain market data.</p>
         <p>
-          <strong>Main functions and modules:</strong> 
-          <ul>
-            <li>Permission management</li>
-            <li>Raw data source management</li>
-            <li>Custom data cleaning</li>
-            <li>data visualization</li>
-          </ul>
+          <strong>Main functions and modules:</strong>
+        <ul>
+          <li>Permission management</li>
+          <li>Raw data source management</li>
+          <li>Custom data cleaning</li>
+          <li>data visualization</li>
+        </ul>
         </p>
         <p>
           <strong>Main technology stack:</strong> Java, SpringBoot, mybaits, SQL, MySQL, SQL server, clickhouse, Python,
@@ -245,6 +263,7 @@
         </ul>
       </div>
     </div>
-    </div>
+  </div>
 </body>
+
 </html>

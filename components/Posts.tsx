@@ -11,7 +11,7 @@ type Props = {
   allTags: string[];
 };
 
-export default function Home({ allPostsData, allTags }: Props) {
+export default function Posts({ allPostsData, allTags }: Props) {
   const [filter, setFilter] = useState("all");
   const router = useRouter();
   return (

@@ -9,10 +9,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import Home from "../components/Home";
+import Posts from "../components/Posts";
 import { getSortedPostsData } from "../lib/post";
 
-const name = "熊熊熊熊熊🐻";
+const name = "Winnie Xiong";
 
 export default async function Page() {
   const allPostsData = getSortedPostsData();
@@ -25,14 +25,14 @@ export default async function Page() {
   return (
     <>
       <header>
-        <Image
+        {/* <Image
           priority
           src="/images/avatar.png"
           height={144}
           width={144}
           alt={name}
           className="m-auto"
-        />
+        /> */}
         <h1 className="text-3xl font-bold text-center">{name}</h1>
       </header>
       <section className="mx-auto max-w-2xl">
@@ -71,12 +71,31 @@ export default async function Page() {
                   oudoorRent
                 </Link>
               </CardTitle>
-              <CardDescription>A ASP.NET core program.</CardDescription>
+              <CardDescription>
+                Frontend was build with help from AI. Backend was build on
+                ASP.NET core.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="w-80 p-0">
+            <CardHeader>
+              <CardTitle>
+                <Link
+                  href="http://www.weirdzoo.fun"
+                  className="p-0 text-lg hover:underline"
+                  target="_blank"
+                >
+                  WeirdZoo
+                </Link>
+              </CardTitle>
+              <CardDescription>
+                A multiple players online game based on MERN stack.
+              </CardDescription>
             </CardHeader>
           </Card>
         </div>
       </section>
-      <Home allPostsData={allPostsData} allTags={allTags} />
+      <Posts allPostsData={allPostsData} allTags={allTags} />
     </>
   );
 }
