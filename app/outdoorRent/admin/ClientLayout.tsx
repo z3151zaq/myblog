@@ -17,7 +17,7 @@ export default function RentLayout(props: PropsWithChildren) {
         }}
         route={{
           path: "/outdoorRent/admin",
-          name: "首页",
+          name: "homepage",
           component: "./Welcome",
           icon: "home",
           routes: [
@@ -29,6 +29,10 @@ export default function RentLayout(props: PropsWithChildren) {
             {
               path: "/user",
               name: "user management",
+            },
+            {
+              path: "/equipment",
+              name: "equipment management",
             },
             {
               path: "/equipmentType",

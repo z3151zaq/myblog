@@ -8,6 +8,8 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import Head from "next/head";
 import React from "react";
 
+import { Toaster } from "@/components/ui/sonner";
+
 const siteTitle = "Winnie Xiong";
 
 export default function RootLayout({
@@ -38,6 +40,7 @@ export default function RootLayout({
         ></link>
       </Head>
       <body>
+        <Toaster toastOptions={{}}/>
         <AntdRegistry>{children}</AntdRegistry>
       </body>
     </html>

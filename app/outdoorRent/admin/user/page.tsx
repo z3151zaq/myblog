@@ -10,12 +10,19 @@ import {
 import { Button, message, Space, Tag } from "antd";
 import { useRef } from "react";
 
-import { createNewUser, getUsers, UserRole } from "@/services/outdoorService";
+import {
+  createNewUser,
+  deleteUser,
+  getUsers,
+  grantUserAdmin,
+  IUserModel,
+  UserRole,
+} from "@/services/outdoorService";
 
 const IndexPage = () => {
   const [messageApi, ctx] = message.useMessage();
   const tableRef = useRef<ActionType>();
-  const columns: ProColumnType<any>[] = [
+  const columns: ProColumnType<IUserModel>[] = [
     { title: "email", dataIndex: "email" },
     { title: "name", dataIndex: "name" },
     {
@@ -30,15 +37,38 @@ const IndexPage = () => {
     {
       title: "operation",
       valueType: "option",
-      render: (text, record, _, action) => (
+      render: (text, record) => (
         <Space>
-          <a key="edit" onClick={() => console.log("Edit user", record)}>
-            grant admin
-          </a>
+          {!record.roles.includes(UserRole.Admin) && (
+            <a
+              key="grant"
+              onClick={async () => {
+                const res = await grantUserAdmin({
+                  id: record.id,
+                  roles: [...record.roles, UserRole.Admin],
+                });
+                if (res.success) {
+                  messageApi.success("Grant admin successfully");
+                  tableRef.current?.reload();
+                }
+              }}
+            >
+              grant admin
+            </a>
+          )}
           <a key="edit" onClick={() => console.log("Edit user", record)}>
             edit
           </a>
-          <a key="delete" onClick={() => console.log("Delete user", record)}>
+          <a
+            key="delete"
+            onClick={async () => {
+              const res = await deleteUser({ id: record.id });
+              if (res.success) {
+                messageApi.success("Delete admin successfully");
+                tableRef.current?.reload();
+              }
+            }}
+          >
             delete
           </a>
         </Space>

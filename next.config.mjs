@@ -7,6 +7,14 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "imgur.com",
+      },
+    ],
+  },
 };
 // Merge MDX config with Next.js config
 export default nextConfig;

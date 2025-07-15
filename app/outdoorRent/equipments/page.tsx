@@ -1,9 +1,10 @@
 "use client";
-
+import { useRequest } from "ahooks";
 import { format } from "date-fns";
 import { CalendarIcon, Filter, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -44,142 +45,7 @@ import {
 } from "@/components/ui/sheet";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
-
-// Sample data for equipment
-const equipmentData = [
-  {
-    id: 1,
-    name: "4-Person Tent",
-    category: "Camping",
-    type: "Tents",
-    price: 25,
-    location: "Denver, CO",
-    condition: "excellent",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Spacious waterproof tent with easy setup",
-  },
-  {
-    id: 2,
-    name: "Sleeping Bag",
-    category: "Camping",
-    type: "Sleeping Gear",
-    price: 15,
-    location: "Boulder, CO",
-    condition: "good",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Comfortable for temperatures down to 30°F",
-  },
-  {
-    id: 3,
-    name: "Portable Stove",
-    category: "Camping",
-    type: "Cooking",
-    price: 12,
-    location: "Denver, CO",
-    condition: "normal",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Compact and efficient cooking solution",
-  },
-  {
-    id: 4,
-    name: "Hiking Backpack",
-    category: "Hiking",
-    type: "Bags",
-    price: 18,
-    location: "Fort Collins, CO",
-    condition: "excellent",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "65L capacity with multiple compartments",
-  },
-  {
-    id: 5,
-    name: "Trekking Poles",
-    category: "Hiking",
-    type: "Accessories",
-    price: 10,
-    location: "Boulder, CO",
-    condition: "good",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Adjustable aluminum poles with cork grips",
-  },
-  {
-    id: 6,
-    name: "GPS Navigator",
-    category: "Hiking",
-    type: "Electronics",
-    price: 20,
-    location: "Denver, CO",
-    condition: "normal",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Reliable navigation with preloaded trails",
-  },
-  {
-    id: 7,
-    name: "Mountain Bike",
-    category: "Cycling",
-    type: "Bikes",
-    price: 35,
-    location: "Boulder, CO",
-    condition: "excellent",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Full suspension with hydraulic disc brakes",
-  },
-  {
-    id: 8,
-    name: "Cycling Helmet",
-    category: "Cycling",
-    type: "Safety",
-    price: 8,
-    location: "Denver, CO",
-    condition: "good",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Lightweight with adjustable fit system",
-  },
-  {
-    id: 9,
-    name: "Bike Repair Kit",
-    category: "Cycling",
-    type: "Tools",
-    price: 10,
-    location: "Fort Collins, CO",
-    condition: "normal",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Essential tools for on-trail repairs",
-  },
-  {
-    id: 10,
-    name: "Kayak",
-    category: "Water Sports",
-    type: "Boats",
-    price: 40,
-    location: "Boulder, CO",
-    condition: "excellent",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Stable recreational kayak with paddle",
-  },
-  {
-    id: 11,
-    name: "Paddleboard",
-    category: "Water Sports",
-    type: "Boards",
-    price: 30,
-    location: "Denver, CO",
-    condition: "good",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Inflatable SUP with pump and carry bag",
-  },
-  {
-    id: 12,
-    name: "Life Vest",
-    category: "Water Sports",
-    type: "Safety",
-    price: 8,
-    location: "Fort Collins, CO",
-    condition: "bad",
-    image: "/placeholder.svg?height=200&width=300",
-    description: "Coast guard approved PFD for water activities",
-  },
-];
+import { getEquipmentList } from "@/services/outdoorService";
 
 // Sample data for categories and types
 const categories = [
@@ -228,6 +94,9 @@ export default function EquipmentPage() {
   const [selectedLocation, setSelectedLocation] = useState<string>("");
   const [selectedConditions, setSelectedConditions] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const { data } = useRequest(getEquipmentList);
+  const router = useRouter();
+  const equipmentData = data?.data || [];
 
   // Mobile filter drawer state
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -242,7 +111,7 @@ export default function EquipmentPage() {
     // Filter by search query
     if (
       searchQuery &&
-      !item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      !item.typeName.toLowerCase().includes(searchQuery.toLowerCase())
     ) {
       return false;
     }
@@ -250,19 +119,22 @@ export default function EquipmentPage() {
     // Filter by category
     if (selectedCategory === "all") {
       return true;
-    } else if (selectedCategory && item.category !== selectedCategory) {
+    } else if (
+      selectedCategory &&
+      !item.categoryNames.includes(selectedCategory)
+    ) {
       return false;
     }
 
     // Filter by type
     if (selectedType === "all") {
       return true;
-    } else if (selectedType && item.type !== selectedType) {
+    } else if (selectedType && item.typeName !== selectedType) {
       return false;
     }
 
     // Filter by price range
-    if (item.price < priceRange[0] || item.price > priceRange[1]) {
+    if (item.pricePerDay < priceRange[0] || item.pricePerDay > priceRange[1]) {
       return false;
     }
 
@@ -697,8 +569,8 @@ export default function EquipmentPage() {
                   <Card key={item.id} className="overflow-hidden">
                     <div className="relative h-48">
                       <Image
-                        src={item.image || "/placeholder.svg"}
-                        alt={item.name}
+                        src={"https://imgur.com/x347CHA.gif"}
+                        alt={item.typeName}
                         fill
                         className="object-cover"
                       />
@@ -716,9 +588,11 @@ export default function EquipmentPage() {
                     </div>
                     <CardHeader className="pb-2">
                       <div className="flex justify-between">
-                        <CardTitle className="text-lg">{item.name}</CardTitle>
+                        <CardTitle className="text-lg">
+                          {item.typeName}
+                        </CardTitle>
                         <p className="font-bold text-green-600">
-                          ${item.price}/day
+                          ${item.pricePerDay}/day
                         </p>
                       </div>
                       <div className="flex items-center text-sm text-muted-foreground">
@@ -728,15 +602,23 @@ export default function EquipmentPage() {
                     </CardHeader>
                     <CardContent className="pb-2">
                       <p className="text-sm text-muted-foreground">
-                        {item.description}
+                        {item.availability}
                       </p>
                       <div className="mt-2 flex flex-wrap gap-2">
-                        <Badge variant="outline">{item.category}</Badge>
-                        <Badge variant="outline">{item.type}</Badge>
+                        {item.categoryNames.map((category) => (
+                          <Badge key={category} variant="outline">
+                            {category}
+                          </Badge>
+                        ))}
                       </div>
                     </CardContent>
                     <CardFooter>
-                      <Button className="w-full bg-green-600 hover:bg-green-700">
+                      <Button
+                        className="w-full bg-green-600 hover:bg-green-700"
+                        onClick={() =>
+                          router.push(`/outdoorRent/equipments/${item.id}`)
+                        }
+                      >
                         Rent Now
                       </Button>
                     </CardFooter>

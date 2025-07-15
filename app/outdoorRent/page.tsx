@@ -80,7 +80,6 @@ export default function Home() {
       </header>
 
       <main className="flex-1">
-        {/* Hero Section */}
         <section className="relative">
           <div className="absolute inset-0 bg-black/40 z-10" />
           <div className="relative h-[600px]">
