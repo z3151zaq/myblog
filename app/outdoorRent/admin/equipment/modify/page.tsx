@@ -11,7 +11,7 @@ import {
 } from "@ant-design/pro-components";
 import { message } from "antd";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import {
   getEquipmentTypes,
@@ -104,7 +104,7 @@ const ModifyEquipmentPage = () => {
   };
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       {contextHolder}
       <ProCard title={`${equipmentId ? "Edit" : "Add"} Equipment`}>
         <ProForm
@@ -185,7 +185,7 @@ const ModifyEquipmentPage = () => {
           />
         </ProForm>
       </ProCard>
-    </>
+    </Suspense>
   );
 };
 
