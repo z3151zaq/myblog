@@ -6,6 +6,12 @@ interface IResponse<T> {
   statusCode: number;
 }
 
+interface IPageQueryData<T> {
+  items: T[];
+  totalCount: number;
+  pageNumber: number;
+  pageSize: number;
+}
 interface IEquipmentTypeModel {
   typeName: string;
   id: string;
@@ -187,6 +193,117 @@ export async function placeRentOrder(data: IPlaceRentOrderData) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
+  });
+  return res;
+}
+
+export interface IGetOrderListData {
+  PageNumber: number;
+  PageSize: number;
+}
+
+export enum OrderStatus {
+  Pending,
+  Paid,
+  Cancelled,
+  Received,
+  Returned,
+  Completed,
+}
+
+export interface IOrderModel {
+  id: string;
+  userId: number;
+  user: IUserModel | null;
+  equipmentId: number;
+  equipment: IEquipmentModel | null;
+  startDate: string;
+  endDate: string;
+  totalAmount: number;
+  paidAt: string;
+  returnAt: string;
+  status: OrderStatus; // 0: pending, 1: completed, 2: cancelled
+  createdAt: string;
+}
+
+export interface IGetOrderListResponse {
+  items: IOrderModel[];
+  totalCount: number;
+  pageNumber: number;
+  pageSize: number;
+}
+
+export async function getOrderList(data: IGetOrderListData) {
+  const params = new URLSearchParams(data as any).toString();
+  const res = await myFetch<IPageQueryData<IOrderModel>>(
+    `/api/outdoor/Order?${params}`,
+  );
+  return res;
+}
+
+export const uploadBase64ToImgur = async (base64Image: string) => {
+  try {
+    const response = await fetch("https://api.imgur.com/3/image", {
+      method: "POST",
+      headers: {
+        Authorization: "Client-ID faae4a923886abd",
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        image: base64Image,
+        type: "base64",
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.success && data.data?.link) {
+      return { url: data.data.link };
+    } else {
+      return { error: data.data?.error || "Upload failed." };
+    }
+  } catch (error: any) {
+    console.error("Upload to Imgur error:", error?.message || error);
+    return { error: "Failed to upload image to Imgur." };
+  }
+};
+
+export interface ILocationModel {
+  id: number;
+  name: string;
+  locationDetail: string;
+  managerId: number;
+  managerName: string;
+}
+
+export interface ICreateOrModifyLocationDTO {
+  id?: number;
+  name: string;
+  locationDetail: string;
+  managerId: number;
+}
+
+// get all location
+export async function getLocationList() {
+  const res = await myFetch<ILocationModel[]>("/api/outdoor/Location");
+  return res;
+}
+
+// add or modify location
+export async function addOrModifyLocation(data: ICreateOrModifyLocationDTO) {
+  const res = await myFetch<ILocationModel>("/api/outdoor/Location", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return res;
+}
+
+// 删除 location
+export async function deleteLocation(id: number) {
+  const res = await myFetch<boolean>(`/api/outdoor/Location/${id}`, {
+    method: "DELETE",
   });
   return res;
 }

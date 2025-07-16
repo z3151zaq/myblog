@@ -26,6 +26,8 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+import NavigateButton from "./NavigationButton";
+
 export default function Home() {
   // const router = useRouter();
   return (
@@ -84,7 +86,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/40 z-10" />
           <div className="relative h-[600px]">
             <Image
-              src="/placeholder.svg?height=600&width=1200"
+              src="https://i.imgur.com/91mJa14.jpeg"
               alt="Outdoor adventure"
               fill
               className="object-cover"
@@ -140,9 +142,9 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardFooter className="flex justify-center">
-                <Button variant="outline" className="w-full">
+                <NavigateButton target="/outdoorRent/equipments">
                   Explore
-                </Button>
+                </NavigateButton>
               </CardFooter>
             </Card>
 
@@ -155,9 +157,9 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardFooter className="flex justify-center">
-                <Button variant="outline" className="w-full">
+                <NavigateButton target="/outdoorRent/equipments">
                   Explore
-                </Button>
+                </NavigateButton>
               </CardFooter>
             </Card>
 
@@ -170,9 +172,9 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardFooter className="flex justify-center">
-                <Button variant="outline" className="w-full">
+                <NavigateButton target="/outdoorRent/equipments">
                   Explore
-                </Button>
+                </NavigateButton>
               </CardFooter>
             </Card>
 
@@ -185,9 +187,9 @@ export default function Home() {
                 </CardDescription>
               </CardHeader>
               <CardFooter className="flex justify-center">
-                <Button variant="outline" className="w-full">
+                <NavigateButton target="/outdoorRent/equipments">
                   Explore
-                </Button>
+                </NavigateButton>
               </CardFooter>
             </Card>
           </div>
@@ -219,19 +221,19 @@ export default function Home() {
                       title: "4-Person Tent",
                       description: "Spacious waterproof tent with easy setup",
                       price: "$25/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                     {
                       title: "Sleeping Bag",
                       description: "Comfortable for temperatures down to 30°F",
                       price: "$15/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                     {
                       title: "Portable Stove",
                       description: "Compact and efficient cooking solution",
                       price: "$12/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                   ].map((item, index) => (
                     <Card key={index} className="overflow-hidden">
@@ -240,7 +242,7 @@ export default function Home() {
                           src={item.image || "/placeholder.svg"}
                           alt={item.title}
                           fill
-                          className="object-cover"
+                          className="object-contain"
                         />
                       </div>
                       <CardHeader>
@@ -266,19 +268,19 @@ export default function Home() {
                       title: "Hiking Backpack",
                       description: "65L capacity with multiple compartments",
                       price: "$18/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                     {
                       title: "Trekking Poles",
                       description: "Adjustable aluminum poles with cork grips",
                       price: "$10/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                     {
                       title: "GPS Navigator",
                       description: "Reliable navigation with preloaded trails",
                       price: "$20/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                   ].map((item, index) => (
                     <Card key={index} className="overflow-hidden">
@@ -287,7 +289,7 @@ export default function Home() {
                           src={item.image || "/placeholder.svg"}
                           alt={item.title}
                           fill
-                          className="object-cover"
+                          className="object-contain"
                         />
                       </div>
                       <CardHeader>
@@ -313,19 +315,19 @@ export default function Home() {
                       title: "Mountain Bike",
                       description: "Full suspension with hydraulic disc brakes",
                       price: "$35/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                     {
                       title: "Cycling Helmet",
                       description: "Lightweight with adjustable fit system",
                       price: "$8/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                     {
                       title: "Bike Repair Kit",
                       description: "Essential tools for on-trail repairs",
                       price: "$10/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                   ].map((item, index) => (
                     <Card key={index} className="overflow-hidden">
@@ -334,7 +336,7 @@ export default function Home() {
                           src={item.image || "/placeholder.svg"}
                           alt={item.title}
                           fill
-                          className="object-cover"
+                          className="object-contain"
                         />
                       </div>
                       <CardHeader>
@@ -360,20 +362,20 @@ export default function Home() {
                       title: "Kayak",
                       description: "Stable recreational kayak with paddle",
                       price: "$40/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                     {
                       title: "Paddleboard",
                       description: "Inflatable SUP with pump and carry bag",
                       price: "$30/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                     {
                       title: "Life Vest",
                       description:
                         "Coast guard approved PFD for water activities",
                       price: "$8/day",
-                      image: "/placeholder.svg?height=200&width=300",
+                      image: "https://i.imgur.com/e8ql5k5.jpeg",
                     },
                   ].map((item, index) => (
                     <Card key={index} className="overflow-hidden">
@@ -382,7 +384,7 @@ export default function Home() {
                           src={item.image || "/placeholder.svg"}
                           alt={item.title}
                           fill
-                          className="object-cover"
+                          className="object-contain"
                         />
                       </div>
                       <CardHeader>
@@ -537,7 +539,7 @@ export default function Home() {
                 </div>
                 <div className="relative h-64 rounded-lg overflow-hidden">
                   <Image
-                    src="/placeholder.svg?height=300&width=500"
+                    src="https://i.imgur.com/91mJa14.jpeg"
                     alt="Outdoor adventure"
                     fill
                     className="object-cover"

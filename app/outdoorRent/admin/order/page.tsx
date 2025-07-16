@@ -10,13 +10,13 @@ import {
 import { Button, message, Space, Tag } from "antd";
 import { useRef } from "react";
 
-import { getEquipmentList, IEquipmentModel } from "@/services/outdoorService";
+import { getOrderList, IOrderModel } from "@/services/outdoorService";
 
 const IndexPage = () => {
   const [messageApi, ctx] = message.useMessage();
   const tableRef = useRef<ActionType>();
-  const columns: ProColumnType<IEquipmentModel>[] = [
-    { title: "type", dataIndex: "typeName" },
+  const columns: ProColumnType<IOrderModel>[] = [
+    { title: "id", dataIndex: "id" },
     { title: "availability", dataIndex: "availability" },
     { title: "price/day", dataIndex: "pricePerDay" },
     { title: "description", dataIndex: "descriptions" },
@@ -113,11 +113,14 @@ const IndexPage = () => {
         //   </ModalForm>
         // }
         columns={columns}
-        request={async () => {
-          const res = await getEquipmentList();
+        request={async (pageParams) => {
+          const res = await getOrderList({
+            PageNumber: pageParams.current || 1,
+            PageSize: pageParams.pageSize || 20,
+          });
           return {
-            data: res.data,
-            total: res.data.length,
+            data: res.data.items,
+            total: res.data.totalCount,
             success: true,
           };
         }}

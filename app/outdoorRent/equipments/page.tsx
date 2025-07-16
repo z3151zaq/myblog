@@ -572,7 +572,7 @@ export default function EquipmentPage() {
                         src={"https://imgur.com/x347CHA.gif"}
                         alt={item.typeName}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                       />
                       <Badge
                         className={cn(

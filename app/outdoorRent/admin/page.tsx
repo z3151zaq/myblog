@@ -1,5 +1,7 @@
+import { redirect } from "next/navigation";
+
 const IndexPage = () => {
-  return <div>welcome</div>;
+  redirect("/outdoorRent/admin/user");
 };
 
 export default IndexPage;

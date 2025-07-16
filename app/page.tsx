@@ -82,6 +82,19 @@ export default async function Page() {
             <CardHeader>
               <CardTitle>
                 <Link
+                  href="/outdoorRent/admin"
+                  className="p-0 text-lg hover:underline"
+                >
+                  oudoorRent admin
+                </Link>
+              </CardTitle>
+              <CardDescription>The admin of outdoorRent.</CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="w-80 p-0">
+            <CardHeader>
+              <CardTitle>
+                <Link
                   href="http://www.weirdzoo.fun"
                   className="p-0 text-lg hover:underline"
                   target="_blank"
