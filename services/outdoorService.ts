@@ -38,7 +38,7 @@ export async function myFetch<T>(
 
 export async function getEquipmentTypes() {
   const res = await myFetch<IEquipmentTypeModel[]>(
-    `/api/outdoor/EquipmentType/types`,
+    `/api/outdoor/EquipmentType/type`,
   );
   return res;
 }
