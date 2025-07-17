@@ -300,10 +300,44 @@ export async function addOrModifyLocation(data: ICreateOrModifyLocationDTO) {
   return res;
 }
 
-// 删除 location
+// delete location
 export async function deleteLocation(id: number) {
   const res = await myFetch<boolean>(`/api/outdoor/Location/${id}`, {
     method: "DELETE",
   });
+  return res;
+}
+export interface ICreateOrModifyEquipmentData {
+  id?: number;
+  location: string;
+  typeId: number;
+  condition: string;
+  availability: string;
+  pricePerDay: number;
+  descriptions: string;
+}
+
+// add or modify equipment
+export async function addOrModifyEquipment(data: ICreateOrModifyEquipmentData) {
+  const res = await myFetch<IEquipmentModel>("/api/outdoor/Equipment/modify", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return res;
+}
+
+// delete location
+export async function deleteEquipment(data: { id: number }) {
+  const res = await myFetch<boolean>(`/api/outdoor/Equipment`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return res;
+}
+
+export async function getEquipmentById(id: number) {
+  const res = await myFetch<IEquipmentModel>(`/api/outdoor/Equipment/${id}`);
   return res;
 }

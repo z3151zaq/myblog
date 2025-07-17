@@ -55,7 +55,6 @@ const IndexPage = () => {
               }
             }}
             title="Are you sure to delete?"
-            trigger="click"
           >
             <a key="delete">delete</a>
           </Popconfirm>

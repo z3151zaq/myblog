@@ -7,12 +7,18 @@ import {
   ProFormSelect,
   ProFormText,
 } from "@ant-design/pro-components";
-import { Button, message, Space, Tag } from "antd";
+import { Button, message, Popconfirm, Space, Tag } from "antd";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
-import { getEquipmentList, IEquipmentModel } from "@/services/outdoorService";
+import {
+  deleteEquipment,
+  getEquipmentList,
+  IEquipmentModel,
+} from "@/services/outdoorService";
 
 const IndexPage = () => {
+  const router = useRouter();
   const [messageApi, ctx] = message.useMessage();
   const tableRef = useRef<ActionType>();
   const columns: ProColumnType<IEquipmentModel>[] = [
@@ -27,36 +33,27 @@ const IndexPage = () => {
       render: (text, record) => (
         <Space>
           <a
-            key="grant"
-            // onClick={async () => {
-            //   const res = await grantUserAdmin({
-            //     id: record.id,
-            //     roles: [...record.roles, UserRole.Admin],
-            //   });
-            //   if (res.success) {
-            //     messageApi.success("Grant admin successfully");
-            //     tableRef.current?.reload();
-            //   }
-            // }}
+            key="edit"
+            onClick={() => {
+              router.push(
+                `/outdoorRent/admin/equipment/modify?id=${record.id}`,
+              );
+            }}
           >
-            grant admin
-          </a>
-
-          <a key="edit" onClick={() => console.log("Edit user", record)}>
             edit
           </a>
-          <a
-            key="delete"
-            // onClick={async () => {
-            //   const res = await deleteUser({ id: record.id });
-            //   if (res.success) {
-            //     messageApi.success("Delete admin successfully");
-            //     tableRef.current?.reload();
-            //   }
-            // }}
+          <Popconfirm
+            onConfirm={async () => {
+              const res = await deleteEquipment({ id: record.id });
+              if (res.success) {
+                messageApi.success("Delete successfully");
+                tableRef.current?.reload();
+              }
+            }}
+            title="Are you sure to delete?"
           >
-            delete
-          </a>
+            <a key="delete">delete</a>
+          </Popconfirm>
         </Space>
       ),
     },
@@ -112,6 +109,14 @@ const IndexPage = () => {
         //     />
         //   </ModalForm>
         // }
+        headerTitle={
+          <Button
+            type="primary"
+            onClick={() => router.push("/outdoorRent/admin/equipment/modify")}
+          >
+            Add Equipment
+          </Button>
+        }
         columns={columns}
         request={async () => {
           const res = await getEquipmentList();
