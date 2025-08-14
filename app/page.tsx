@@ -95,7 +95,7 @@ export default async function Page() {
             <CardHeader>
               <CardTitle>
                 <Link
-                  href="http://www.weirdzoo.fun"
+                  href="https://www.weirdzoo.fun"
                   className="p-0 text-lg hover:underline"
                   target="_blank"
                 >
