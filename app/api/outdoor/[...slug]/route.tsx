@@ -28,7 +28,7 @@ async function handleRequest(
   ...args: [Request]
 ) {
   const request = args[0];
-  const targetUrl = new URL(`${process.env.BACKEND_URL}${slug.join("/")}`);
+  const targetUrl = new URL(`${process.env.BACKEND_URL}api/${slug.join("/")}`);
   const response = await fetch(targetUrl.href, {
     method,
     headers: request.headers as any,
