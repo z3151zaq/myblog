@@ -218,7 +218,7 @@ export function useSignalR(
         connectionRef.current &&
         connectionRef.current.state === signalR.HubConnectionState.Connected
       ) {
-        connectionRef.current.invoke("LeaveRoom", meetingId);
+        connectionRef.current.send("LeaveRoom", meetingId);
         connectionRef.current.stop();
       }
     }
