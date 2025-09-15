@@ -1,0 +1,107 @@
+---
+title: 'OnlineMeeting doc'
+date: '2025-08-16'
+tags: ['tech']
+---
+
+# 🧑‍💻 Online Meeting Room
+
+A modern, real-time video meeting application built with React, Next.js, WebRTC, and SignalR. This project enables users to join virtual rooms, share audio/video, and interact with other participants in real time—all in the browser.
+
+---
+
+## 🚀 Features
+
+- **🔑 Join/Leave Meeting:**  
+  Enter your name, select audio/video devices, and join a meeting room. Leave gracefully with a single click.
+- **🎥 Real-Time Video/Audio:**  
+  Peer-to-peer video and audio streaming using WebRTC. See yourself and all other participants live.
+- **👥 Participant List:**  
+  Sidebar displays all current participants, with your own identity clearly marked.
+- **🖼️ Dynamic Main Video:**  
+  Click any participant to view their video in the main area.
+- **🛠️ Device Selection Modal:**  
+  Choose which devices (camera/microphone) to enable before joining.
+- **🔄 Real-Time Updates:**  
+  Participant list and video streams update instantly as users join or leave.
+- **🧹 Clean Disconnection:**  
+  Server is reliably notified when a user leaves, ensuring accurate participant state.
+
+---
+
+## 🏗️ Architecture & Technologies
+
+| Layer         | Technology                | Purpose                                 |
+| ------------- | ------------------------ | --------------------------------------- |
+| Frontend      | React, Next.js (App Dir) | UI, routing, state management           |
+| UI Components | shadcn/ui, Tailwind CSS  | Modern, accessible UI                   |
+| Signaling     | SignalR (@microsoft/signalr) | Real-time messaging, participant sync   |
+| Media         | WebRTC                   | Peer-to-peer video/audio streaming      |
+| Language      | TypeScript               | Type safety, better DX                  |
+
+---
+
+## 📁 Key Files
+
+- `/app/onlineMeeting/[id]/page.tsx`  
+  Main meeting room UI. Handles device selection, participant list, video rendering, and leave logic.
+
+- `/app/onlineMeeting/[id]/useSignalR.tsx`  
+  Custom React hook for SignalR connection, signaling, peer connection management, and participant state.
+
+---
+
+## 🧩 Core Logic & Flow
+
+### 1. User Joins Meeting
+
+- User enters name and selects devices in a modal.
+- `getUserMedia` is called to obtain local media stream.
+- After local stream is ready, SignalR connection is established and user joins the room.
+
+### 2. Signaling & Peer Connection
+
+- SignalR handles:
+  - `ParticipantsUpdated`: Keeps all clients' participant lists in sync.
+  - `NewParticipant`: Notifies existing users to establish new peer connections.
+  - `ReceiveSignal`: Handles WebRTC offer/answer/candidate exchange.
+- Each peer connection is created only after the local stream is available, ensuring tracks are added correctly.
+
+### 3. Media Stream Management
+
+- Local and remote streams are managed via React refs.
+- Main video area displays the selected participant's stream.
+- Each participant's video is rendered in the sidebar, with the current user highlighted.
+
+### 4. Leaving the Meeting
+
+- On "Leave Meeting" button click:
+  - SignalR `LeaveRoom` is invoked and connection is stopped.
+  - User is redirected to the meeting home page.
+- As a fallback, `beforeunload` event attempts to notify the server synchronously.
+
+---
+
+## ⚡ Technical Highlights & Challenges
+
+### 🔄 WebRTC & SignalR Integration
+
+- **Challenge:** Ensuring local media is ready before peer connections are created.
+- **Solution:** Only start SignalR and peer connections after `getUserMedia` resolves.
+
+### 🕰️ React Ref Timing
+
+- **Challenge:** Video refs may be null if the DOM is not ready.
+- **Solution:** Use `useEffect` to assign streams only after refs and streams are available.
+
+### 🧹 Reliable Disconnection
+
+- **Challenge:** Browsers may not wait for async operations in `beforeunload`.
+- **Solution:** Main leave logic is handled on user action; `beforeunload` is a best-effort fallback using `.send`.
+
+### 🧑‍🤝‍🧑 Participant State Consistency
+
+- **Challenge:** Keeping all clients' participant lists and streams in sync.
+- **Solution:** SignalR events update state reactively; peer connections are managed per participant.
+
+---

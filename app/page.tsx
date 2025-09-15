@@ -22,6 +22,46 @@ export default async function Page() {
       .filter(Boolean)
       .flat(),
   );
+  const programs = [
+    {
+      name: "My CV",
+      desc: "My personal cv.",
+      url: "/cv.html",
+    },
+    {
+      name: "One Step Two Step",
+      desc: "A demo game using Cocos engine.",
+      url: "/games/stepbystep/index.html",
+    },
+    {
+      name: "outdoorRent",
+      desc: "Frontend was build with help from AI. Backend was build on ASP.NET core.",
+      url: "/outdoorRent",
+    },
+    {
+      name: "outdoorRent admin",
+      desc: "The admin of outdoorRent.",
+      url: "/outdoorRent/admin",
+    },
+    {
+      name: "WeirdZoo",
+      desc: "A multiple players online game based on MERN stack.",
+      url: "https://github.com/z3151zaq/732groupwork",
+    },
+    {
+      name: "OnlineMeeting",
+      desc: "An online meeting app using WebRTC and SignalR.",
+      url: "/onlineMeeting",
+      extra: (
+        <Link
+          href="/posts/OnlineMeeting doc"
+          className="ml-4 p-0 text-lg hover:underline text-blue-600"
+        >
+          {"[doc]"}
+        </Link>
+      ),
+    },
+  ];
   return (
     <>
       <header>
@@ -39,74 +79,22 @@ export default async function Page() {
       <section className="mx-auto max-w-2xl">
         <div className="text-2xl font-bold">Some Demo</div>
         <div className="flex flex-wrap gap-2">
-          <Card className="w-80 p-0">
-            <CardHeader>
-              <CardTitle>
-                <Link href="/cv.html" className="p-0 text-lg hover:underline">
-                  My CV
-                </Link>
-              </CardTitle>
-              <CardDescription>My personal cv.</CardDescription>
-            </CardHeader>
-          </Card>
-          <Card className="w-80 p-0">
-            <CardHeader>
-              <CardTitle>
-                <Link
-                  href="/games/stepbystep/index.html"
-                  className="p-0 text-lg hover:underline"
-                >
-                  One Step Two Step
-                </Link>
-              </CardTitle>
-              <CardDescription>A demo game using Cocos engine.</CardDescription>
-            </CardHeader>
-          </Card>
-          <Card className="w-80 p-0">
-            <CardHeader>
-              <CardTitle>
-                <Link
-                  href="/outdoorRent"
-                  className="p-0 text-lg hover:underline"
-                >
-                  oudoorRent
-                </Link>
-              </CardTitle>
-              <CardDescription>
-                Frontend was build with help from AI. Backend was build on
-                ASP.NET core.
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          <Card className="w-80 p-0">
-            <CardHeader>
-              <CardTitle>
-                <Link
-                  href="/outdoorRent/admin"
-                  className="p-0 text-lg hover:underline"
-                >
-                  oudoorRent admin
-                </Link>
-              </CardTitle>
-              <CardDescription>The admin of outdoorRent.</CardDescription>
-            </CardHeader>
-          </Card>
-          <Card className="w-80 p-0">
-            <CardHeader>
-              <CardTitle>
-                <Link
-                  href="https://www.weirdzoo.fun"
-                  className="p-0 text-lg hover:underline"
-                  target="_blank"
-                >
-                  WeirdZoo
-                </Link>
-              </CardTitle>
-              <CardDescription>
-                A multiple players online game based on MERN stack.
-              </CardDescription>
-            </CardHeader>
-          </Card>
+          {programs.map((program) => (
+            <Card className="w-80 p-0" key={program.name}>
+              <CardHeader>
+                <CardTitle>
+                  <Link
+                    href={program.url}
+                    className="p-0 text-lg hover:underline"
+                  >
+                    {program.name}
+                  </Link>
+                  {program.extra}
+                </CardTitle>
+                <CardDescription>{program.desc}</CardDescription>
+              </CardHeader>
+            </Card>
+          ))}
         </div>
       </section>
       <Posts allPostsData={allPostsData} allTags={allTags} />
