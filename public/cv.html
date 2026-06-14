@@ -6,25 +6,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CV - Winnie Xiong</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      color: #222;
+      background-color: #f2f3f5;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 10px 20px;
+      max-width: 860px;
+      margin: 28px auto;
+      padding: 34px 42px;
       background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e1e1e1;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
     }
 
-    h1,
-    h2,
+    h1 {
+      margin: 0 0 8px;
+      color: #111;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      color: #222;
+      font-size: 17px;
+      letter-spacing: 0.04em;
+    }
+
     h3 {
-      color: #333;
+      color: #222;
+      font-size: 15px;
+    }
+
+    a {
+      color: #285f8f;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+      color: #444;
+      font-size: 13px;
     }
 
     .contact-info {
@@ -38,18 +78,21 @@
     }
 
     .block {
-      margin-bottom: 20px;
+      margin-top: 25px;
+      margin-bottom: 0;
     }
 
     .block h2 {
-      border-bottom: 2px solid #ccc;
-      margin: 10px 0;
+      margin: 0 0 14px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #777;
     }
 
     .time-range {
       display: flex;
+      gap: 16px;
       justify-content: space-between;
-      align-items: center;
+      align-items: baseline;
     }
 
     .time-range h3,
@@ -57,27 +100,35 @@
       margin: 0;
     }
 
+    .time-range> :last-child {
+      flex: 0 0 auto;
+      color: #555;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
     .job,
     .project {
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #ccc;
+      margin-bottom: 17px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid #ddd;
     }
 
     .experience .job p,
     .project p,
-
     .project .project-item p {
       margin: 0;
     }
 
     .block p {
-      margin: 4px 0;
+      margin: 5px 0;
     }
 
     .desc {
-      color: #6d6a6a;
-      font-size: 14px;
+      margin: 5px 0 8px !important;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.45;
     }
 
     .tech-stack {
@@ -98,12 +149,113 @@
     }
 
     ul {
-      margin-top: 0;
-      margin-bottom: 0;
+      margin: 3px 0 5px;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 2px 0;
+    }
+
+    li::marker {
+      color: #666;
     }
 
     .degree {
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+    }
+
+    strong {
+      color: #222;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        background: #fff;
+      }
+
+      .container {
+        margin: 0;
+        padding: 24px 20px;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .contact-row {
+        display: grid !important;
+        gap: 2px !important;
+      }
+
+      .contact-row>span[aria-hidden="true"] {
+        display: none;
+      }
+
+      .time-range {
+        display: block;
+      }
+
+      .time-range> :last-child {
+        margin-top: 2px;
+        white-space: normal;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 11mm;
+      }
+
+      body {
+        background: #fff;
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      h2 {
+        font-size: 13px;
+      }
+
+      h3 {
+        font-size: 12px;
+      }
+
+      .block {
+        margin-top: 15px;
+      }
+
+      .block h2 {
+        margin-bottom: 8px;
+      }
+
+      .job,
+      .project {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        break-inside: avoid;
+      }
+
+      .desc,
+      .time-range> :last-child,
+      .contact-row {
+        font-size: 10px;
+      }
+
+      a {
+        color: #222;
+      }
     }
   </style>
 </head>
@@ -111,31 +263,74 @@
 <body>
   <div class="container">
     <h1>Winnie Xiong</h1>
-    <div style="display: flex; gap: 12px;">
-      <span>Phone: 022-6491811</span>
-      <span>|</span>
+    <div class="contact-row">
+      <span>Phone: 022-0405111</span>
+      <span aria-hidden="true">|</span>
       <span>E-mail: <a href="mailto:winniexny@gmail.com">winniexny@gmail.com</a></span>
+      <span aria-hidden="true">|</span>
+      <span>Visa Status: Open Work Visa</span>
     </div>
-    <div style="display: flex; gap: 12px;">
+    <div class="contact-row">
       <span>Blog:
-        <a href="https://myblog-fawn-phi.vercel.app" target="_blank">https://myblog-fawn-phi.vercel.app</a>
+        <a href="https://myblog-fawn-phi.vercel.app" target="_blank"
+          rel="noreferrer">https://myblog-fawn-phi.vercel.app</a>
       </span>
-      <span>|</span>
-      <span>GitHub: <a href="https://github.com/z3151zaq" target="_blank">https://github.com/z3151zaq</a></span>
+      <span aria-hidden="true">|</span>
+      <span>GitHub: <a href="https://github.com/z3151zaq" target="_blank"
+          rel="noreferrer">https://github.com/z3151zaq</a></span>
     </div>
     <div class="block" href="#about-me">
       <h2>ABOUT ME</h2>
-      <p><strong>Career Summary:</strong> Data Analyst (3yrs) -> Frontend Developer (3yrs) -> Full Stack Developer (now)
-      </p>
-      <p><strong>Main Tech Stack:</strong> JavaScript, HTML, CSS, React, C#, ASP.NET core, SQL Server, MySQL, MongoDB
-      </p>
+      <p><strong>Career Summary:</strong> Full Stack Developer with 8 years of professional experience and a Master's
+        degree in Information Technology. Experienced in building and supporting SaaS and B2B web applications using
+        C#, ASP.NET Core, SQL, React, and TypeScript. Comfortable working with customers and business stakeholders to
+        clarify requirements, design practical technical solutions, and support applications throughout their
+        lifecycle.</p>
+      <p><strong>Main Tech Stack:</strong></p>
+      <p><strong>Microsoft &amp; Backend:</strong> C#, ASP.NET Core, Web API, Entity Framework Core, SQL Server, Azure
+        Service Bus, Node.js, Express, Python, Flask, Django</p>
+      <p><strong>Frontend:</strong> React, TypeScript, JavaScript, HTML, CSS, Next.js, Vue, PWA, Ant Design, Tailwind
+        CSS</p>
+      <p><strong>Data &amp; Tooling:</strong> SQL, PostgreSQL, MySQL, MongoDB, ClickHouse, Git, Docker, SignalR, AWS
+        Cognito, AWS S3, AI-assisted development tools</p>
       <p><strong>Certificate:</strong> RHCE, PMP</p>
     </div>
     <div class="block experience" href="#experience">
       <h2>PROFESSIONAL EXPERIENCE</h2>
       <div class="job">
         <div class="time-range">
-          <h3>Alibaba Group</h3>
+          <h3>Vxceed Technology, New Zealand</h3>
+          <p>Nov 2025 - Present</p>
+        </div>
+        <p><strong>Position:</strong> Software Engineer</p>
+        <p><strong>Work Content:</strong></p>
+        <ul>
+          <li>Develop, maintain, and support SaaS applications for delivery and transportation operations.</li>
+          <li>Work with business stakeholders to understand operational requirements and translate them into practical,
+            maintainable software solutions.</li>
+          <li>Refactor an existing transportation solution to improve code structure, maintainability, and scalability
+            while preserving business-critical workflows.</li>
+        </ul>
+        <p style="margin-top: 10px;"><strong>Project Experience - Delivery Application</strong></p>
+        <p><strong>Background:</strong> Provide drivers with a mobile application for completing delivery operations,
+          including shipment verification, returns, location capture, and proof of delivery.</p>
+        <p><strong>Main functions and modules:</strong></p>
+        <ul>
+          <li>Delivery lookup and QR code scanning</li>
+          <li>Product returns and empty-item collection</li>
+          <li>Driver location and photo capture</li>
+          <li>Proof-of-delivery document upload and validation</li>
+          <li>English and Vietnamese localization</li>
+        </ul>
+        <p><strong>Highlights:</strong> Built a mobile-first PWA with an offline-first architecture using Service
+          Workers,
+          background synchronization, and IndexedDB. Integrated camera-based document capture, presigned file uploads,
+          and AI-assisted signature validation to support reliable delivery operations in areas with unstable network
+          connectivity.</p>
+      </div>
+      <div class="job">
+        <div class="time-range">
+          <h3>Alibaba Group, China</h3>
           <p>Jul 2022 - Feb 2025</p>
         </div>
         <p class="desc">
@@ -146,16 +341,13 @@
           and logistics.
         </p>
         <p><strong>Position:</strong> Senior SDE</p>
-        <p>
-          <strong>Technology stack:</strong> JavaScript, HTML, CSS, React, Vue, Ant Design, UmiJS, NodeJS, Dingtalk Mini
-          app, Midway, Koa,
-          express, etc.
-        </p>
         <p><strong>Work Content:</strong></p>
         <ul>
-          <li>Provide targeted software architecture design based on business needs.</li>
-          <li>Develop and maintain internal systems for finance, HR, customer service, and project management.</li>
-          <li>Plan development work and coordinate team members.</li>
+          <li>Worked with product owners and business teams to translate requirements into software architecture and
+            delivery plans.</li>
+          <li>Developed, maintained, and supported enterprise systems for finance, HR, customer service, and project
+            management.</li>
+          <li>Planned development work, reviewed technical approaches, and coordinated delivery across team members.</li>
         </ul>
         <p style="margin-top: 10px;"><strong>Project Experience - Lingxi Games Achievement System</strong></p>
         <p><strong>Background:</strong> Record and track employee achievements using a game like system.</p>
@@ -168,7 +360,6 @@
           <li>Data visualization</li>
         </ul>
         </p>
-        <p><strong>Main technology stack:</strong> React, Dingtalk Mini app, Ant Design, UmiJS, NodeJS, Midway.</p>
         <p>
           <strong>Highlights:</strong> Two user interfaces (website and Miniapp), complex permission
           design, beautiful
@@ -177,7 +368,7 @@
       </div>
       <div class="job">
         <div class="time-range">
-          <h3>Xinbao(Donlim) Electric Appliance Co., Ltd.</h3>
+          <h3>Xinbao(Donlim) Electric Appliance Co., Ltd., China</h3>
           <p>Mar 2020 - Jun 2022</p>
         </div>
         <p class="desc">
@@ -186,16 +377,12 @@
           Carrefour, exporting products worldwide.
         </p>
         <p><strong>Position:</strong> Data Engineer</p>
-        <p>
-          <strong>Technology stack:</strong>Vue, Python, numpy, pandas, Flask, Django, SQL, MySQL, SQL server,
-          clickhouse, Program
-          Management
-        </p>
         <p><strong>Work Content:</strong></p>
         <ul>
-          <li>Develop and maintain the E-commerce data system.</li>
-          <li>Negotiate with data providers for market data and solutions.</li>
-          <li>Integrate data and analysis results for specific needs.</li>
+          <li>Developed and maintained an e-commerce data platform used by sales and R&amp;D teams.</li>
+          <li>Worked directly with external data providers to evaluate market-data products and agree on technical
+            solutions.</li>
+          <li>Translated stakeholder requirements into data integration, cleaning, analysis, and reporting solutions.</li>
         </ul>
         <p><strong>Project Experience - Xinbao Data Sharing Platform</strong></p>
         <p><strong>Project background:</strong> Enable sales and R&D departments to quickly obtain market data.</p>
@@ -209,11 +396,6 @@
         </ul>
         </p>
         <p>
-          <strong>Main technology stack:</strong> Java, SpringBoot, mybaits, SQL, MySQL, SQL server, clickhouse, Python,
-          Flask, React, Ant
-          Design.
-        </p>
-        <p>
           <strong>Highlights:</strong> Integration of multiple data sources, web link to different server
           levels, big data
           handling.
@@ -221,35 +403,54 @@
       </div>
       <div class="job">
         <div class="time-range">
-          <h3>Damai Information Technology Co., Ltd. Guangzhou</h3>
+          <h3>Damai Information Technology Co., Ltd. China</h3>
           <p>Mar 2019 - Jan 2020</p>
         </div>
 
         <p><strong>Position:</strong> Senior Data Analyst</p>
-        <p><strong>Technology stack:</strong> Python, numpy, pandas, SQL, MySQL, Excel</p>
         <p><strong>Work Content:</strong></p>
         <ul>
-          <li>Provide market data analytics solutions to customers.</li>
-          <li>Work with data engineers to obtain and clean data.</li>
+          <li>Worked directly with customers to understand their goals and deliver market-data analytics solutions.</li>
+          <li>Collaborated with data engineers to source, validate, and clean data for reliable customer reporting.</li>
         </ul>
       </div>
       <div class="job" style="border-bottom: none;">
         <div class="time-range">
-          <h3>Sunshine Life Insurance Co., Ltd.</h3>
+          <h3>Sunshine Life Insurance Co., Ltd., China</h3>
           <p>Jun 2018 - Mar 2019</p>
         </div>
         <p><strong>Position:</strong> Data Analyst</p>
-        <p><strong>Skills:</strong> Python, SQL, Excel, Tableau, Power BI</p>
         <p><strong>Work Content:</strong></p>
         <ul>
-          <li>Gather data from various sources and ensure data quality.</li>
-          <li>Create visualizations and dashboards using Tableau, Power BI.</li>
+          <li>Gathered and validated data from multiple sources to maintain data quality.</li>
+          <li>Created and supported business dashboards using Tableau and Power BI.</li>
         </ul>
       </div>
     </div>
     <div class="block projects" href="#projects">
       <h2>PERSONAL PROJECTS</h2>
-      <div class="project">
+      <div class="project" style="border-bottom: none;">
+        <p><strong>Veyra</strong></p>
+        <p><strong>Introduction:</strong> A multi-role SaaS platform for production companies, talent agencies, and
+          performers, designed to replace disconnected spreadsheets, emails, call sheets, and scheduling workflows with
+          a unified workspace.</p>
+        <p><strong>Main functions and modules:</strong></p>
+        <ul>
+          <li>Production, casting role, booking, and event management</li>
+          <li>Talent profiles, submissions, model cards, and document management</li>
+          <li>Calendar, availability, task, and schedule coordination</li>
+          <li>Role-based enterprise, agency, and talent workspaces</li>
+          <li>Direct and group messaging</li>
+        </ul>
+        <p><strong>Main technology stack:</strong> React, TypeScript, Vite, React Router, Tailwind CSS, ASP.NET Core Web
+          APIs, Entity Framework Core, PostgreSQL, YARP, SignalR, AWS Cognito, AWS S3, Docker.</p>
+        <p><strong>Highlights:</strong> Designed a scalable full-stack architecture with role-aware navigation and
+          permissions, reusable workflow components, and service-layer API integration. Built a microservice-oriented
+          backend separating identity, talent management, and real-time messaging behind an authenticated API gateway.</p>
+        <p><strong>Architecture roadmap:</strong> Redis-based caching and message-queue integration for performance,
+          asynchronous processing, and decoupled communication between services.</p>
+      </div>
+      <!-- <div class="project">
         <p><strong>WeirdZoo</strong>: <a target="_blank" href="https://github.com/z3151zaq/732groupwork">GitHub
             Link</a></p>
         <p><strong>Introduction:</strong> An online multiplayer game based on the MERN technology stack.Players
@@ -286,7 +487,7 @@
           <strong>Highlights:</strong> Integration of Azure Service Buss, including the user interface and the
           management backend.
         </p>
-      </div>
+      </div> -->
     </div>
     <div class="block" href="#education">
       <h2>EDUCATION</h2>
