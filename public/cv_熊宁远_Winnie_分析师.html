@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>简历 - Winnie Xiong</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      color: #222;
+      background-color: #f2f3f5;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 28px auto;
+      padding: 34px 42px;
+      background-color: #fff;
+      border: 1px solid #e1e1e1;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      color: #111;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      color: #222;
+      font-size: 17px;
+      letter-spacing: 0.04em;
+    }
+
+    h3 {
+      color: #222;
+      font-size: 15px;
+    }
+
+    a {
+      color: #285f8f;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+      color: #444;
+      font-size: 13px;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .contact-info div {
+      flex: 1;
+    }
+
+    .block {
+      margin-top: 25px;
+      margin-bottom: 0;
+    }
+
+    .block h2 {
+      margin: 0 0 14px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #777;
+    }
+
+    .time-range {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .time-range h3,
+    .time-range p {
+      margin: 0;
+    }
+
+    .time-range> :last-child {
+      flex: 0 0 auto;
+      color: #555;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .job,
+    .project {
+      margin-bottom: 17px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .experience .job p,
+    .project p,
+    .project .project-item p {
+      margin: 0;
+    }
+
+    .block p {
+      margin: 5px 0;
+    }
+
+    .desc {
+      margin: 5px 0 8px !important;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .tech-stack {
+      margin: 10px 0;
+    }
+
+    .tech-stack ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tech-stack ul li {
+      display: inline-block;
+      margin-right: 10px;
+      background-color: #f0f0f0;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    ul {
+      margin: 3px 0 5px;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 2px 0;
+    }
+
+    li::marker {
+      color: #666;
+    }
+
+    .degree {
+      margin-bottom: 14px;
+    }
+
+    strong {
+      color: #222;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        background: #fff;
+      }
+
+      .container {
+        margin: 0;
+        padding: 24px 20px;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .contact-row {
+        display: grid !important;
+        gap: 2px !important;
+      }
+
+      .contact-row>span[aria-hidden="true"] {
+        display: none;
+      }
+
+      .time-range {
+        display: block;
+      }
+
+      .time-range> :last-child {
+        margin-top: 2px;
+        white-space: normal;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 11mm;
+      }
+
+      body {
+        background: #fff;
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      h2 {
+        font-size: 13px;
+      }
+
+      h3 {
+        font-size: 12px;
+      }
+
+      .block {
+        margin-top: 15px;
+      }
+
+      .block h2 {
+        margin-bottom: 8px;
+      }
+
+      .job,
+      .project {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        break-inside: avoid;
+      }
+
+      .desc,
+      .time-range> :last-child,
+      .contact-row {
+        font-size: 10px;
+      }
+
+      a {
+        color: #222;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>熊宁远（Winnie Xiong）</h1>
+    <div class="contact-row">
+      <span>电话：022-0405111</span>
+      <span aria-hidden="true">|</span>
+      <span>邮箱：<a href="mailto:winniexny@gmail.com">winniexny@gmail.com</a></span>
+      <span aria-hidden="true">|</span>
+      <span>签证状态：Open Work Visa</span>
+    </div>
+    <!-- <div class="contact-row">
+      <span>博客：
+        <a href="https://myblog-fawn-phi.vercel.app" target="_blank"
+          rel="noreferrer">https://myblog-fawn-phi.vercel.app</a>
+      </span>
+      <span aria-hidden="true">|</span>
+      <span>GitHub：<a href="https://github.com/z3151zaq" target="_blank"
+          rel="noreferrer">https://github.com/z3151zaq</a></span>
+    </div> -->
+    <div class="block" href="#about-me">
+      <h2>个人简介</h2>
+      <p><strong>职业概述：</strong>具备 5
+        年数据分析、市场研究与行业分析相关经验，职业经历覆盖上市保险公司、市场数据咨询公司及上市制造企业，长期围绕业务数据、行业趋势、市场竞争和客户需求进行分析与解读。擅长将复杂数据和行业信息转化为清晰、结构化、易理解的观点，适合面向券商客户进行投研内容讲解、市场分析培训和投资逻辑分享。
+      </p>
+      <p>
+        <strong>核心能力：</strong>熟悉数据收集、数据清洗、指标体系搭建、市场数据分析、行业研究、竞品分析、报告撰写和数据可视化。具备面向客户沟通和讲解分析结论的经验，能够根据不同受众背景调整表达方式，将分析结果转化为可理解、可讨论、可行动的内容。
+      </p>
+      <p>
+        <strong>投资经历：</strong>大学开始学习投资，投资品种涵盖基金、股票、期货、期权、虚拟货币等，市场覆盖范围包括A股、港股及海外市场。19年-25年年化收益率超20%。曾获新西兰老虎证券投资比赛第二名。主要投资方法包括主观行业交易、套利交易、量化交易等。
+      </p>
+      <p><strong>证书：</strong>RHCE、PMP</p>
+    </div>
+    <div class="block experience" href="#experience">
+      <h2>工作经历</h2>
+      <div class="job">
+        <div class="time-range">
+          <h3>Vxceed Technology，新西兰</h3>
+          <p>2025.11 - 至今</p>
+        </div>
+        <p><strong>职位：</strong>Software Engineer</p>
+        <p><strong>工作内容：</strong></p>
+        <ul>
+          <li>开发、维护并支持面向配送与运输运营场景的 SaaS 应用。</li>
+          <li>与业务相关方沟通运营需求，并将需求转化为可维护、可落地的软件方案。</li>
+          <li>在保障核心业务流程稳定的前提下，重构既有交通运输方案，提升代码结构、可维护性与可扩展性。</li>
+        </ul>
+        <!-- <p style="margin-top: 10px;"><strong>项目经历 - Lighthouse Mercury</strong></p>
+        <p><strong>项目背景：</strong>为司机提供移动端配送应用，支持配送任务执行，包括运单验证、退货处理、定位采集和交付凭证上传。</p>
+        <p><strong>主要功能与模块：</strong></p>
+        <ul>
+          <li>配送任务查询与二维码扫描</li>
+          <li>商品退货与空箱回收</li>
+          <li>司机定位与现场照片采集</li>
+          <li>交付凭证文件上传与校验</li>
+          <li>英文与越南语国际化</li>
+        </ul>
+        <p><strong>项目亮点：</strong>构建移动端优先的 PWA，采用 Service Worker、后台同步与 IndexedDB 实现离线优先架构。集成相机拍摄、预签名文件上传和 AI
+          辅助签名验证能力，保障网络不稳定场景下的配送作业可靠性。</p> -->
+      </div>
+      <div class="job">
+        <div class="time-range">
+          <h3>灵犀互娱，阿里巴巴集团，中国</h3>
+          <p>2022.07 - 2025.02</p>
+        </div>
+        <!-- <p class="desc">
+          阿里巴巴集团是中国跨国科技企业，业务覆盖电子商务、云计算、数字媒体和人工智能等领域，并通过 Alibaba.com、AliExpress、Lazada 等平台服务全球贸易、零售和物流场景。
+        </p> -->
+        <p><strong>职位：</strong>Senior SDE</p>
+        <p><strong>工作内容：</strong></p>
+        <ul>
+          <li>与产品负责人及业务团队协作，将业务需求转化为软件架构方案与开发交付计划。</li>
+          <li>开发、维护并支持财务、人力资源、客户服务和项目管理等企业内部系统。</li>
+          <li>规划开发任务，评审技术方案，并协调团队成员推进交付。</li>
+        </ul>
+        <!-- <p style="margin-top: 10px;"><strong>项目经历 - 灵犀游戏成就系统</strong></p>
+        <p><strong>项目背景：</strong>通过游戏化系统记录和追踪员工成就。</p>
+        <p>
+          <strong>主要功能与模块：</strong>
+        <ul>
+          <li>用户与权限管理</li>
+          <li>数据异常检测</li>
+          <li>任务与成就管理</li>
+          <li>数据可视化</li>
+        </ul>
+        </p>
+        <p>
+          <strong>项目亮点：</strong>同时支持 Web 端和小程序端，包含复杂权限设计、图形展示和动画效果。
+        </p> -->
+      </div>
+      <div class="job">
+        <div class="time-range">
+          <h3>新宝（Donlim）电器股份有限公司，中国</h3>
+          <p>2020.03 - 2022.06</p>
+        </div>
+        <p class="desc">
+          新宝集团成立于 1988 年，是中国上市小家电制造企业，产品包括电热水壶、咖啡机和烤面包机等，并与 Electrolux、Carrefour 等国际品牌合作，产品出口全球。
+        </p>
+        <p><strong>职位：</strong>数据分析主管</p>
+        <p><strong>工作内容：</strong></p>
+        <ul>
+          <li>作为内部数据与行业研究顾问，面向销售、研发、产品和管理层提供市场规模、品类趋势、消费者需求、竞品表现和渠道变化分析。</li>
+          <li>从业务问题出发拆解研究框架，整合第三方市场数据、电商平台数据和内部经营数据，形成专题分析报告、管理层汇报材料和业务建议。</li>
+          <li>搭建从数据收集、数据治理、指标体系、市场分析到报告路演的标准化分析流程，提升内部团队获取数据、理解市场和制定策略的效率。</li>
+          <li>参与企业并购、关键投资决策和市场进入评估，撰写可行性分析、市场调研报告和竞争格局分析，为管理层决策提供数据支持。</li>
+        </ul>
+        <p><strong>项目经历 - 《2022全球小家电趋势洞察白皮书》</strong>：<a
+            href="https://assets-v2.cbndata.com/download_reports/prod/1821433_1902_1784266205178.pdf"
+            target="_blank" rel="noreferrer">下载链接</a></p>
+        <p>
+          <strong>项目背景：</strong>新宝股份在中国小家电市场自有品牌取得阶段性成功后，计划进一步推动品牌出海。由于公司内部对海外小家电市场规模、区域差异、品类结构和消费者需求缺乏系统认知，因此联合国内领先市场数据服务商开展全球小家电趋势研究，为出海战略和产品规划提供决策参考。
+        </p>
+        <p><strong>研究内容：</strong></p>
+        <ul>
+          <li>从全球视角梳理小家电市场规模、增长趋势、区域分布和主要消费场景。</li>
+          <li>围绕厨房小家电、家居环境电器、个护小家电等重点品类，分析品类渗透率、价格带、产品形态和增长机会。</li>
+          <li>结合海外电商平台、第三方市场数据和行业资料，研究消费者需求变化、热门功能卖点和竞品布局。</li>
+          <li>将复杂市场数据转化为白皮书内容、趋势判断、图表展示和管理层汇报材料。</li>
+        </ul>
+        <p>
+          <strong>项目亮点：</strong>该项目是公司首次系统性从全球范围收集和分析小家电行业数据，覆盖多个国家、区域和核心品类。项目输出不仅用于内部战略讨论，也为品牌出海、产品立项、市场进入和渠道选择提供了结构化行业洞察。
+        </p>
+      </div>
+      <div class="job">
+        <div class="time-range">
+          <h3>大麦信息科技有限公司，中国</h3>
+          <p>2019.03 - 2020.01</p>
+        </div>
+
+        <p><strong>职位：</strong>电商咨询分析师</p>
+        <p><strong>工作内容：</strong></p>
+        <ul>
+          <li>面向电商品牌客户提供市场分析、消费者分析和竞品研究服务，帮助客户理解品类趋势、渠道表现和用户需求变化。</li>
+          <li>直接与客户沟通业务目标和研究问题，将客户需求拆解为可执行的数据分析方案，并交付咨询报告和汇报材料。</li>
+          <li>定期为企业客户开展培训与分享，内容涵盖线上营销方法、电商数据分析、消费者画像、品类机会识别和数据驱动经营决策。</li>
+          <li>结合电商平台数据、行业数据和消费者行为数据，分析品牌表现、价格带、产品卖点、用户画像和竞争格局。</li>
+        </ul>
+      </div>
+      <div class="job" style="border-bottom: none;">
+        <div class="time-range">
+          <h3>阳光人寿保险股份有限公司，中国</h3>
+          <p>2018.06 - 2019.03</p>
+        </div>
+        <p><strong>职位：</strong>数据分析师</p>
+        <p><strong>工作内容：</strong></p>
+        <ul>
+          <li>负责银保渠道电销业务的数据分析工作，围绕客户触达、销售转化、保单成交和团队绩效等环节进行持续跟踪。</li>
+          <li>分析电销转化漏斗、客户画像、销售过程指标和产品表现，帮助业务团队识别转化瓶颈和潜在增长机会。</li>
+          <li>从业务系统和销售数据中收集、清洗和校验数据，保障金融业务分析口径的一致性和数据质量。</li>
+          <li>使用 Tableau、Power BI 和 Excel 搭建经营分析报表与业务仪表盘，为银保渠道管理、销售复盘和策略调整提供数据支持。</li>
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="block projects" href="#projects">
+      <h2>个人项目</h2>
+      <div class="project" style="border-bottom: none;">
+        <p><strong>Veyra</strong></p>
+        <p><strong>项目介绍：</strong>面向制作公司、经纪公司和表演者的多角色 SaaS 平台，旨在用统一工作台替代分散的表格、邮件、通告单和排期流程。</p>
+        <p><strong>主要功能与模块：</strong></p>
+        <ul>
+          <li>项目制作、选角角色、预约和活动管理</li>
+          <li>人才档案、投递、模卡和文档管理</li>
+          <li>日历、可用性、任务与排期协调</li>
+          <li>基于角色的企业、经纪公司和人才工作台</li>
+          <li>私聊和群组消息</li>
+        </ul>
+        <p><strong>主要技术栈：</strong>React、TypeScript、Vite、React Router、Tailwind CSS、ASP.NET Core Web APIs、Entity Framework
+          Core、PostgreSQL、YARP、SignalR、AWS Cognito、AWS S3、Docker。</p>
+        <p><strong>项目亮点：</strong>设计可扩展的全栈架构，支持基于角色的导航和权限、可复用业务组件以及服务层 API 集成。后端采用微服务思路，通过认证 API Gateway
+          分离身份、人才管理和实时消息服务。</p>
+        <p><strong>架构规划：</strong>计划引入 Redis 缓存和消息队列，用于性能优化、异步处理以及服务间通信解耦。</p>
+      </div>
+    </div> -->
+    <div class="block" href="#education">
+      <h2>教育经历</h2>
+      <div class="degree">
+        <div class="time-range">
+          <h3>奥克兰大学</h3>
+          <div>2025.03 - 2026.03</div>
+        </div>
+        <div>信息技术硕士（MIT）</div>
+        <div>一等荣誉学位（First Class Honours）</div>
+      </div>
+      <div class="degree">
+        <div class="time-range">
+          <h3>暨南大学</h3>
+          <p>2014.09 - 2018.07</p>
+        </div>
+        <div>化学学士</div>
+        <div>GPA：3.4（前 20%）</div>
+        <div>荣誉奖项：国家励志奖学金（2016）</div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

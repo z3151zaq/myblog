@@ -203,13 +203,13 @@
     @media print {
       @page {
         size: A4;
-        margin: 11mm;
+        margin: 9mm 10mm;
       }
 
       body {
         background: #fff;
-        font-size: 11px;
-        line-height: 1.35;
+        font-size: 10.5px;
+        line-height: 1.3;
       }
 
       .container {
@@ -221,11 +221,11 @@
       }
 
       h1 {
-        font-size: 25px;
+        font-size: 24px;
       }
 
       h2 {
-        font-size: 13px;
+        font-size: 12.5px;
       }
 
       h3 {
@@ -233,18 +233,32 @@
       }
 
       .block {
-        margin-top: 15px;
+        margin-top: 12px;
       }
 
       .block h2 {
-        margin-bottom: 8px;
+        margin-bottom: 6px;
+        padding-bottom: 4px;
       }
 
       .job,
       .project {
-        margin-bottom: 10px;
-        padding-bottom: 10px;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
         break-inside: avoid;
+      }
+
+      .page-two-start {
+        break-before: page;
+      }
+
+      ul {
+        margin-top: 2px;
+        margin-bottom: 3px;
+      }
+
+      li {
+        margin: 1px 0;
       }
 
       .desc,
@@ -272,8 +286,8 @@
     </div>
     <div class="contact-row">
       <span>Blog:
-        <a href="https://myblog-fawn-phi.vercel.app" target="_blank"
-          rel="noreferrer">https://myblog-fawn-phi.vercel.app</a>
+        <a href="https://online-resume.winniexny.workers.dev" target="_blank"
+          rel="noreferrer">https://online-resume.winniexny.workers.dev</a>
       </span>
       <span aria-hidden="true">|</span>
       <span>GitHub: <a href="https://github.com/z3151zaq" target="_blank"
@@ -281,18 +295,18 @@
     </div>
     <div class="block" href="#about-me">
       <h2>ABOUT ME</h2>
-      <p><strong>Career Summary:</strong> Full Stack Developer with 8 years of professional experience and a Master's
-        degree in Information Technology. Experienced in building and supporting SaaS and B2B web applications using
-        C#, ASP.NET Core, SQL, React, and TypeScript. Comfortable working with customers and business stakeholders to
-        clarify requirements, design practical technical solutions, and support applications throughout their
-        lifecycle.</p>
+      <p><strong>Career Summary:</strong> Full Stack Developer with 5 years of professional software development experience and a Master's
+        degree in Information Technology, specialising in SaaS products and complex B2B workflows. Experienced in
+        designing and delivering end-to-end web solutions across C#, ASP.NET Core, Web API, SQL, React, and TypeScript,
+        with particular strength in frontend engineering. Comfortable working directly with customers and business
+        stakeholders to turn operational requirements into scalable technical solutions and support products throughout
+        their lifecycle.</p>
       <p><strong>Main Tech Stack:</strong></p>
-      <p><strong>Microsoft &amp; Backend:</strong> C#, ASP.NET Core, Web API, Entity Framework Core, SQL Server, Azure
-        Service Bus, Node.js, Express, Python, Flask, Django</p>
-      <p><strong>Frontend:</strong> React, TypeScript, JavaScript, HTML, CSS, Next.js, Vue, PWA, Ant Design, Tailwind
-        CSS</p>
-      <p><strong>Data &amp; Tooling:</strong> SQL, PostgreSQL, MySQL, MongoDB, ClickHouse, Git, Docker, SignalR, AWS
-        Cognito, AWS S3, AI-assisted development tools</p>
+      <p><strong>Backend &amp; APIs:</strong> C#, ASP.NET Core, Web API, Entity Framework Core, Node.js, Express,
+        SignalR, Azure Service Bus</p>
+      <p><strong>Databases:</strong> SQL Server, PostgreSQL, MySQL, MongoDB, ClickHouse</p>
+      <p><strong>Frontend:</strong> React, TypeScript, JavaScript, HTML, CSS, PWA, Next.js, Vue</p>
+      <p><strong>Cloud &amp; Delivery:</strong> Azure, AWS, Docker, Git, CI/CD</p>
       <p><strong>Certificate:</strong> RHCE, PMP</p>
     </div>
     <div class="block experience" href="#experience">
@@ -300,19 +314,19 @@
       <div class="job">
         <div class="time-range">
           <h3>Vxceed Technology, New Zealand</h3>
-          <p>Nov 2025 - Present</p>
+          <p>Nov 2025 - Aug 2026</p>
         </div>
         <p><strong>Position:</strong> Software Engineer</p>
         <p><strong>Work Content:</strong></p>
         <ul>
-          <li>Develop, maintain, and support SaaS applications for delivery and transportation operations.</li>
-          <li>Work with business stakeholders to understand operational requirements and translate them into practical,
-            maintainable software solutions.</li>
-          <li>Refactor an existing transportation solution to improve code structure, maintainability, and scalability
-            while preserving business-critical workflows.</li>
+          <li>Led the technical delivery of the client application for a transportation SaaS product supporting
+            hundreds of Coca-Cola Vietnam drivers, with ownership of the complete frontend implementation.</li>
+          <li>Designed API interaction, offline data synchronisation, and file-upload workflows, collaborating with
+            consultants, backend engineers, and designers to turn field operations into maintainable software.</li>
+          <li>Improved application loading performance by 50%, reducing initial load time to under 3 seconds.</li>
         </ul>
-        <p style="margin-top: 10px;"><strong>Project Experience - Delivery Application</strong></p>
-        <p><strong>Background:</strong> Provide drivers with a mobile application for completing delivery operations,
+        <p style="margin-top: 10px;"><strong>Project Experience - Lighthouse Mercury</strong></p>
+        <p><strong>Background:</strong> Digitised paper-based delivery forms and workflows for hundreds of drivers,
           including shipment verification, returns, location capture, and proof of delivery.</p>
         <p><strong>Main functions and modules:</strong></p>
         <ul>
@@ -322,11 +336,10 @@
           <li>Proof-of-delivery document upload and validation</li>
           <li>English and Vietnamese localization</li>
         </ul>
-        <p><strong>Highlights:</strong> Built a mobile-first PWA with an offline-first architecture using Service
-          Workers,
-          background synchronization, and IndexedDB. Integrated camera-based document capture, presigned file uploads,
-          and AI-assisted signature validation to support reliable delivery operations in areas with unstable network
-          connectivity.</p>
+        <p><strong>Highlights:</strong> Designed a mobile-first, offline-capable PWA architecture using Service Workers,
+          background synchronization, and IndexedDB. Replaced fully manual, paper-based field processes with digital
+          forms, resilient data synchronisation, camera-based document capture, presigned uploads, and AI-assisted
+          signature validation for reliable operation in unstable network conditions.</p>
       </div>
       <div class="job">
         <div class="time-range">
@@ -343,14 +356,16 @@
         <p><strong>Position:</strong> Senior SDE</p>
         <p><strong>Work Content:</strong></p>
         <ul>
-          <li>Worked with product owners and business teams to translate requirements into software architecture and
-            delivery plans.</li>
-          <li>Developed, maintained, and supported enterprise systems for finance, HR, customer service, and project
-            management.</li>
-          <li>Planned development work, reviewed technical approaches, and coordinated delivery across team members.</li>
+          <li>Led technical delivery and frontend implementation for an enterprise achievement platform serving
+            approximately 2,000 employees and managing over 100 activities with tens of thousands of work records.</li>
+          <li>Worked with product owners and business teams to translate requirements into technical designs and
+            delivery plans across task, reward-store, and administration systems.</li>
+          <li>Led technical reviews and designed supporting subsystems for implementation by other engineers.</li>
         </ul>
         <p style="margin-top: 10px;"><strong>Project Experience - Lingxi Games Achievement System</strong></p>
-        <p><strong>Background:</strong> Record and track employee achievements using a game like system.</p>
+        <p><strong>Background:</strong> Centralised previously fragmented employee incentive activities into a single
+          platform with traceable digital records, reducing activity setup and launch time from several weeks to as
+          little as 2 days.</p>
         <p>
           <strong>Main functions and modules:</strong>
         <ul>
@@ -361,12 +376,13 @@
         </ul>
         </p>
         <p>
-          <strong>Highlights:</strong> Two user interfaces (website and Miniapp), complex permission
-          design, beautiful
-          graphics and animations.
+          <strong>Highlights:</strong> Delivered web and Mini Program interfaces, task and reward-store modules, complex
+          permissions, and product analytics instrumentation. Designed progressive loading for a data-intensive
+          leaderboard, reducing time to first visible results from approximately 10 seconds to under 1 second while the
+          remaining records loaded incrementally.
         </p>
       </div>
-      <div class="job">
+      <div class="job page-two-start">
         <div class="time-range">
           <h3>Xinbao(Donlim) Electric Appliance Co., Ltd., China</h3>
           <p>Mar 2020 - Jun 2022</p>
@@ -379,51 +395,44 @@
         <p><strong>Position:</strong> Data Engineer</p>
         <p><strong>Work Content:</strong></p>
         <ul>
-          <li>Developed and maintained an e-commerce data platform used by sales and R&amp;D teams.</li>
-          <li>Worked directly with external data providers to evaluate market-data products and agree on technical
-            solutions.</li>
-          <li>Translated stakeholder requirements into data integration, cleaning, analysis, and reporting solutions.</li>
+          <li>Developed and maintained an e-commerce data platform integrating more than 10 domestic and international
+            data sources for approximately 100 product managers and marketing users.</li>
+          <li>Automated standardised data preparation and chart generation, reducing turnaround for configured analyses
+            from up to one month of manual data collection and visualisation to seconds.</li>
+          <li>Translated stakeholder requirements into data integration, cleaning, analysis, and reporting solutions,
+            supporting the positioning and development of dozens of products.</li>
+          <li>Delivered market analysis for acquisition due diligence; research into the maternal and infant market
+            helped management decide not to proceed with a proposed brand acquisition.</li>
         </ul>
         <p><strong>Project Experience - Xinbao Data Sharing Platform</strong></p>
-        <p><strong>Project background:</strong> Enable sales and R&D departments to quickly obtain market data.</p>
-        <p>
-          <strong>Main functions and modules:</strong>
+        <p><strong>Project background:</strong> Created a centralised, self-service platform enabling product and
+          marketing teams to access cross-market e-commerce data and reusable visualisations.</p>
+        <p><strong>Main functions and modules:</strong></p>
         <ul>
           <li>Permission management</li>
           <li>Raw data source management</li>
           <li>Custom data cleaning</li>
-          <li>data visualization</li>
+          <li>Data visualisation</li>
         </ul>
-        </p>
-        <p>
-          <strong>Highlights:</strong> Integration of multiple data sources, web link to different server
-          levels, big data
-          handling.
-        </p>
-      </div>
-      <div class="job">
-        <div class="time-range">
-          <h3>Damai Information Technology Co., Ltd. China</h3>
-          <p>Mar 2019 - Jan 2020</p>
-        </div>
-
-        <p><strong>Position:</strong> Senior Data Analyst</p>
-        <p><strong>Work Content:</strong></p>
-        <ul>
-          <li>Worked directly with customers to understand their goals and deliver market-data analytics solutions.</li>
-          <li>Collaborated with data engineers to source, validate, and clean data for reliable customer reporting.</li>
-        </ul>
+        <p><strong>Highlights:</strong> Integrated 10+ domestic and international e-commerce data sources into a
+          governed platform used by approximately 100 internal users, turning repeatable data retrieval and charting
+          workflows into near-instant self-service outputs.</p>
       </div>
       <div class="job" style="border-bottom: none;">
         <div class="time-range">
-          <h3>Sunshine Life Insurance Co., Ltd., China</h3>
-          <p>Jun 2018 - Mar 2019</p>
+          <h3>Earlier Data &amp; Consulting Experience, China</h3>
+          <p>Jun 2018 - Jan 2020</p>
         </div>
-        <p><strong>Position:</strong> Data Analyst</p>
+        <p><strong>Companies:</strong> Damai Information Technology Co., Ltd. &amp; Sunshine Life Insurance Co., Ltd.</p>
+        <p><strong>Positions:</strong> Senior Data Analyst &amp; Data Analyst</p>
         <p><strong>Work Content:</strong></p>
         <ul>
-          <li>Gathered and validated data from multiple sources to maintain data quality.</li>
-          <li>Created and supported business dashboards using Tableau and Power BI.</li>
+          <li>Worked directly with enterprise customers and internal stakeholders across e-commerce consulting and
+            financial services, translating business questions into practical data solutions.</li>
+          <li>Collected, validated, and analysed multi-source data, delivering market insights and operational dashboards
+            with SQL, Tableau, Power BI, and Excel.</li>
+          <li>Built a strong foundation in customer communication, complex B2B workflows, and data-driven product
+            development.</li>
         </ul>
       </div>
     </div>
@@ -442,13 +451,15 @@
           <li>Role-based enterprise, agency, and talent workspaces</li>
           <li>Direct and group messaging</li>
         </ul>
-        <p><strong>Main technology stack:</strong> React, TypeScript, Vite, React Router, Tailwind CSS, ASP.NET Core Web
-          APIs, Entity Framework Core, PostgreSQL, YARP, SignalR, AWS Cognito, AWS S3, Docker.</p>
-        <p><strong>Highlights:</strong> Designed a scalable full-stack architecture with role-aware navigation and
-          permissions, reusable workflow components, and service-layer API integration. Built a microservice-oriented
-          backend separating identity, talent management, and real-time messaging behind an authenticated API gateway.</p>
-        <p><strong>Architecture roadmap:</strong> Redis-based caching and message-queue integration for performance,
-          asynchronous processing, and decoupled communication between services.</p>
+        <p><strong>Main technology stack:</strong> C#, ASP.NET Core Web APIs, Entity Framework Core, PostgreSQL, YARP,
+          SignalR, Message Queues, AWS Cognito, AWS S3, Docker, React, TypeScript, Vite, Tailwind CSS.</p>
+        <p><strong>Highlights:</strong> Acting as technical lead and principal developer, designed the end-to-end
+          architecture and delivered approximately 50 APIs across talent management, model cards, and scheduling.
+          Designed a microservice-oriented backend with PostgreSQL, authenticated API gateway routing, identity,
+          real-time messaging, cloud file storage, and message-queue-based asynchronous communication between
+          services. Delivered role-aware admin, agent workspace, and Mini Program experiences, supported by a
+          comprehensive CI/CD pipeline and early prospective-customer validation.
+        </p>
       </div>
       <!-- <div class="project">
         <p><strong>WeirdZoo</strong>: <a target="_blank" href="https://github.com/z3151zaq/732groupwork">GitHub
@@ -496,7 +507,7 @@
           <h3>University of Auckland</h3>
           <div>Mar 2025 - Mar 2026</div>
         </div>
-        <div>Master's Degree in Information Technology</div>
+        <div>Master's Degree in Information Technology with first-class honors</div>
       </div>
       <div class="degree">
         <div class="time-range">
@@ -504,7 +515,6 @@
           <p>Sep 2014 - Jul 2018</p>
         </div>
         <div>Bachelor's Degree in Chemistry</div>
-        <div>GPA: 3.4 (top 20%)</div>
         <div>Honor Awards: National Inspirational Scholarship (2016)</div>
       </div>
     </div>
